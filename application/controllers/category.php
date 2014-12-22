@@ -1,0 +1,14 @@
+<?php
+class Category extends CI_Controller {
+	function __constructor() {
+		parent::__constructor();
+	}
+	function index($category_id) {
+		load_module('header');
+		load_module('slider');
+		load_module('subcategories','index',$category_id);
+		load_module('our_works');
+		load_module('articles');
+		load_module('footer');
+	}
+}
