@@ -6,51 +6,87 @@ $(function(){
 	}
 	jQuery.fn.aliment = function(timeout) {
 		var aliment = $(this),
-			items = aliment.find('*'),
-			inAliment = false,
-			prev = null,
-			self = null,
-			TIME_PER_ACTION = 5,
-			time = 0;
+			items = aliment.find('> div');
 		function getStandardWidth() {
-			return aliment.width()/items.length;
+			return Math.round(aliment.width()/items.length);
 		}
 		function getStandardHeight() {
-			return Math.round(getStandardWidth()*3/4);
+			return Math.round(aliment.width()/items.length);
 		}
 		function getUnactiveWidth() {
-			return Math.round(getStandardWidth()*7/8);
+			return Math.round(aliment.width()/items.length*7/8);
 		}
 		function getActiveWidth() {
 			return aliment.width()-(items.length-1)*getUnactiveWidth();
-		}
+		} 
 		function getUnactiveDelta() {
-			return Math.round((getStandardWidth()-getUnactiveWidth())*TIME_PER_ACTION/timeout);
+			return Math.round((aliment.width()/(8*items.length))*TIME_PER_ACTION/timeout);
 		}
+		
+		var	self = null,
+			locked = false,
+			inWorkingArea = false,
+			TIME_PER_ACTION = Math.max(1,timeout/30),
+			time = 0;
+			
 		function initSize(){
-			prev = null;
 			self = null;
-			items.height(getStandardHeight()).width(getStandardWidth());
+			items.height(getStandardHeight());
+			items.slice(1).width(getStandardWidth());
+			items.eq(0).width(aliment.width() - (items.length-1)*getStandardWidth());
+			$('.icon-dark').css({marginTop:Math.round((getStandardHeight()-80)/2-15)});
+		} initSize();
+		
+		function goOut() {
+			if(self){
+				locked = true;
+				items.slice(1).animate(
+					{width : getStandardWidth()},
+					timeout,'linear');
+				items.eq(0).animate(
+					{width : aliment.width() - (items.length-1)*getStandardWidth()},
+					timeout,'linear',
+					function(){locked = false;});
+			}
+			self = null;
 		}
-		initSize();
 		$(window)
 			.resize(initSize)
 			.mousemove(function(event){
 				if(
-					aliment.offset().left<=event.pageX &&
-					aliment.offset().top<=event.pageY &&
-					event.pageX<=aliment.offset().left+aliment.width() &&
-					event.pageY<=aliment.offset().top+aliment.height()
+					aliment.offset().left>event.pageX ||
+					aliment.offset().top>event.pageY ||
+					event.pageX>aliment.offset().left+aliment.width() ||
+					event.pageY>aliment.offset().top+aliment.height()
 				){
-					inAliment = true;
-				}else{
-					if(inAliment){
-						items.animate({width:getStandardWidth()},timeout);
+					inWorkingArea = false;
+					if(!locked){
+						goOut();
 					}
-					inAliment = false;
+				}else{
+					inWorkingArea = true;
 				}
 			});
 		
+		items.mousemove(function(){
+			if(!locked && inWorkingArea){
+				if(!self){
+					locked = true;
+					self = this;
+					time = 0;
+					animateAllToOne();
+				}else if(self != this){
+					locked = true;
+					self = this;
+					items.each(function(){
+						if(this != self){
+							$(this).animate({width:getUnactiveWidth()},timeout);
+						}
+					});
+					$(this).animate({width:getActiveWidth()},timeout,function(){locked = false;});
+				}
+			}
+		});
 		function animateAllToOne() {
 			if(time<timeout) {
 				var width=0;
@@ -63,42 +99,15 @@ $(function(){
 				$(self).width(aliment.width()-width);
 				time+=TIME_PER_ACTION;
 				setTimeout(animateAllToOne,TIME_PER_ACTION);
+			}else{
+				locked = false;
 			}
 		}
-		function animateOneToOne() {
-			$(self).animate({width:getActiveWidth()},timeout);
-			$(prev).animate({width:getUnactiveWidth()},timeout);
-		}
-		items.mousemove(function(){
-			if(inAliment){
-				if(!self){
-					/*time = 0;
-					self = this;
-					animateAllToOne();*/
-					var self = this;
-					items.each(function(){
-						if(this != self){
-							$(this).animate();
-						width+=$(this).width(); 
-					}
-				});
-				}else if(self != this){
-					prev = self;
-					self = this;
-					animateOneToOne();
-				}
-			}
-			return true;
-		});
-		function outputWidth(){
-				var width = 0;
-				items.each(function(){
-						width += $(this).width();
-				});
-				console.log(width,aliment.width());
-		}
+		
+		
+		
 		return aliment;
 	}
-	$('.aliment').aliment(200);
+	$('.aliment').aliment(250);
 
 });	

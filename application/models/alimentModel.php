@@ -4,11 +4,14 @@ class AlimentModel extends CI_Model {
 		parent::__construct();
 		$this->load->model('CategoryModel');
 	}
-	function getElements() {
+	function getItems() {
 		$rootCats = $this->CategoryModel->getSubcategories();
 		$aliments = array();
 		foreach($rootCats as $cat) {
-			$aliments []= base_url().'images/aliments/bg-'.$cat->id.'.jpg';
+			$aliments []= array(
+				'bg'	=> base_url().'images/aliments/bg-'.$cat->id.'.png',
+				'title'	=> $cat->name,
+			);
 		}
 		return $aliments;
 	}
