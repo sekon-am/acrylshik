@@ -178,7 +178,7 @@ header{
 		background: url(../images/main-menu-sprite.png) no-repeat,url(../images/main-menu-sprite.png) no-repeat;
 		transform: scale(1.05,1.05);
 	}
-		.main-menu-element span {
+	.main-menu-element span {
 		display:block;
 		width:110px;
 		margin:80px auto auto auto;
@@ -677,4 +677,16 @@ footer a:hover{
 }
 .warning-message{
 	text-align:center;
+}
+
+/*
+ * Aliments
+ */
+.aliment {
+	min-width:320px;
+	overflow:hidden;
+}
+.aliment-item {
+	width:25%;
+	float:left;
 }

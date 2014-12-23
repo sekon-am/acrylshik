@@ -38,13 +38,8 @@
 |
 */
 
-$route['default_controller'] = "category";
+$route['default_controller'] = "MainPage";
 $route['404_override'] = '';
-//$route['^(.*)'] = 'index.php/$1';
-/*$route['admin/([a-z]+)/'] = '';
-$route[''] = '';
-$route[''] = '';
-$route[''] = '';*/
 
 
 /* End of file routes.php */
