@@ -31,3 +31,4 @@
 			</nav>
 		</div>
 	</header>
+	<div class="header-hr block-wide"></div>

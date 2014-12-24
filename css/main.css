@@ -194,6 +194,14 @@ header{
 	}
 }
 
+.header-hr {
+	width:100%;
+	height:4px;
+	background-image:url(../images/header-hr.png);
+	background-size:100% 4px;
+	background-repeat:no-repeat;
+}
+
 /************
  *SLIDER BLOCK
  ************/
