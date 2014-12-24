@@ -112,6 +112,9 @@ header{
 .main-menu-element span {
 	text-align:center;
 }
+.header-block {
+	overflow:hidden;
+}
 @media screen and (min-width:1601px){
 	.header-block {
 		width:1600px;
@@ -170,12 +173,13 @@ header{
 	.main-menu-element {
 		width: 148px;
 		height:148px;
-		background: url(../images/main-menu-sprite.png) no-repeat;
+		background-image: url(../images/icons.png);
+		background-repeat: no-repeat;
 		overflow:hidden;
 		transition: transform 0.5s;
 	}
 	.main-menu-element:hover {
-		background: url(../images/main-menu-sprite.png) no-repeat,url(../images/main-menu-sprite.png) no-repeat;
+		background: url(../images/icons.png) no-repeat,url(../images/icons.png) no-repeat;
 		transform: scale(1.05,1.05);
 	}
 	.main-menu-element span {
@@ -192,6 +196,20 @@ header{
 		background-image:none !important;
 		margin: 0 15px;
 	}
+}
+
+.sub-menu-wrap{
+	background-color:rgba(0,0,0,.3);
+	overflow:hidden;
+}
+.sub-menu {
+	display:none;
+	margin:15px auto;
+	text-align:center;
+}
+.sub-menu .main-menu-element {
+	float:none;
+	display:inline-block;
 }
 
 .header-hr {
@@ -305,6 +323,7 @@ header{
 	display:block;
 	width:148px;
 	height:148px;
+	background-image:url(../images/icons.png);
 	background-repeat: no-repeat;
 	margin: auto;
 	overflow:hidden;
@@ -313,6 +332,7 @@ header{
 	transition: transform 0.5s;
 }
 .subcategory:hover .icon {
+	background-image:url(../images/icons.png),url(../images/icons.png);
 	text-shadow:0 0 0;
 	transform: scale(1.05,1.05);
 }
@@ -706,7 +726,7 @@ footer a:hover{
 	display:block;
 	width:100%;
 	height:100%;
-	background-color:rgba(0,0,0,.9);
+	background-color:rgba(0,0,0,.8);
 	overflow:hidden;
 }
 .aliment-item .icon-dark {

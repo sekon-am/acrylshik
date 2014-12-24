@@ -5,6 +5,9 @@ class Header extends CI_Controller {
 		$this->load->model('CategoryModel');
 	}
 	function index() {
-		$this->load->view('header',array('categories'=>$this->CategoryModel->getSubcategories(0)));
+		$this->load->view('header',array(
+			'categories'	=> $this->CategoryModel->getSubcategories(0,'DESC'),
+			'subcategories'	=> $this->CategoryModel->getRootSubcategories(),
+		));
 	}
 }

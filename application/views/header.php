@@ -26,9 +26,23 @@
 			<a href="<?php echo get_config_item('base_url'); ?>" id="logo"><img src="<?php echo get_config_item('base_url'); ?>images/logo.png" alt="" title=""/></a>
 			<nav class="main-menu block-wrap">
 <?php foreach($categories as $cat): ?>
-				<a href="<?php echo $cat->url; ?>" class="main-menu-element" title="<?php echo $cat->title; ?>" style="background-image:url(<?php echo $cat->img; ?>)"><span><?php echo $cat->name; ?></span></a>
+				<a href="<?php echo $cat->url; ?>" class="main-menu-element" title="<?php echo $cat->title; ?>" style="background-position: -<?php echo $cat->position->x; ?>px -<?php echo $cat->position->y; ?>px" data-category-show="<?php echo $cat->id; ?>">
+					<span><?php echo $cat->name; ?></span>
+				</a>
 <?php endforeach; ?>
 			</nav>
 		</div>
+		<div class="sub-menu-wrap block-wide">
+<?php foreach($subcategories as $id => $catList): ?>
+			<nav class="sub-menu block-wrap" data-category="<?php echo $id; ?>">
+<?php foreach($catList as $cat): ?>
+				<a href="<?php echo $cat->url; ?>" class="main-menu-element" title="<?php echo $cat->title; ?>" style="background-position: -<?php echo $cat->position->x; ?>px -<?php echo $cat->position->y; ?>px">
+					<span><?php echo $cat->name; ?></span>
+				</a>
+<?php endforeach; ?>
+			</nav>
+<?php endforeach; ?>
+		</div>
 	</header>
 	<div class="header-hr block-wide"></div>
+	<script src="<?php echo get_config_item('base_url'); ?>js/header.js"></script>
