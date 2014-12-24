@@ -1,5 +1,5 @@
 $(function(){
-	$.fn.addWidth = function(delta,minWidth) {
+	jQuery.fn.addWidth = function(delta,minWidth) {
 		var val = $(this).width()+delta;
 		val = (minWidth) ? Math.max(val,minWidth) : val;
 		return $(this).width(val);
@@ -23,33 +23,54 @@ $(function(){
 			return Math.round((aliment.width()/(8*items.length))*TIME_PER_ACTION/timeout);
 		}
 		
+		jQuery.fn.hoverOn = function() {
+			var $this = $(this);
+			$this.find('.shirma').fadeOut(timeout);
+			$this.find('.icon-light-box')
+				.delay(timeout)
+				.animate({
+					top:'0px',
+				},timeout);
+			$this.find('.aliment-info')
+				.delay(timeout)
+				.animate({
+					bottom:'0px',
+				},timeout);
+		}
+		jQuery.fn.hoverOff = function() {
+			var $this = $(this),
+				$iconBox = $this.find('.icon-light-box'),
+				$alimentInfo = $this.find('.aliment-info');
+			$this.find('.shirma').delay(timeout).fadeIn(timeout);
+			$iconBox.animate({top:'-'+$iconBox.height()+'px'},timeout);
+			$alimentInfo.animate({bottom:'-'+$alimentInfo.height()+'px'},timeout);
+		}
+		
 		var	self = null,
 			locked = false,
-			inWorkingArea = false,
-			TIME_PER_ACTION = Math.max(1,timeout/30),
-			time = 0;
+			inWorkingArea = false;
+			TIME_PER_ACTION = Math.max(1,timeout/30);
 			
 		function initSize(){
 			self = null;
 			items.height(getStandardHeight());
 			items.slice(1).width(getStandardWidth());
 			items.eq(0).width(aliment.width() - (items.length-1)*getStandardWidth());
+			
 			$('.icon-dark').css({marginTop:Math.round((getStandardHeight()-80)/2-15)});
+			var $iconBox = $('.icon-light-box'),
+				$alimentInfo = $('.aliment-info');
+			$iconBox.css({
+				top:'-'+$iconBox.height()+'px',
+				left:Math.round((getActiveWidth()-$iconBox.width())/2),
+			});
+			$alimentInfo
+				.height(Math.round($alimentInfo.width()*9/28))
+				.css({
+					bottom:'-'+$alimentInfo.height()+'px'
+				});
 		} initSize();
 		
-		function goOut() {
-			if(self){
-				locked = true;
-				items.slice(1).animate(
-					{width : getStandardWidth()},
-					timeout,'linear');
-				items.eq(0).animate(
-					{width : aliment.width() - (items.length-1)*getStandardWidth()},
-					timeout,'linear',
-					function(){locked = false;});
-			}
-			self = null;
-		}
 		$(window)
 			.resize(initSize)
 			.mousemove(function(event){
@@ -61,29 +82,45 @@ $(function(){
 				){
 					inWorkingArea = false;
 					if(!locked){
-						goOut();
+						if(self){
+							locked = true;
+							$(self).hoverOff();
+							items.slice(1).delay(timeout).animate(
+								{width : getStandardWidth()},
+								timeout,'linear');
+							items.eq(0).delay(timeout).animate(
+								{width : aliment.width() - (items.length-1)*getStandardWidth()},
+								timeout,'linear',
+								function(){locked = false;});
+						}
+						self = null;
 					}
 				}else{
 					inWorkingArea = true;
 				}
 			});
 		
+		function newSelf(nSelf) {
+			locked = true;
+			$(self).hoverOff();
+			self=nSelf;
+			$(self).hoverOn();
+		}
+		var time = 0;
 		items.mousemove(function(){
 			if(!locked && inWorkingArea){
 				if(!self){
-					locked = true;
-					self = this;
+					newSelf(this);
 					time = 0;
 					animateAllToOne();
 				}else if(self != this){
-					locked = true;
-					self = this;
+					newSelf(this);
 					items.each(function(){
 						if(this != self){
-							$(this).animate({width:getUnactiveWidth()},timeout);
+							$(this).delay(timeout).animate({width:getUnactiveWidth()},timeout);
 						}
 					});
-					$(this).animate({width:getActiveWidth()},timeout,function(){locked = false;});
+					$(this).delay(timeout).animate({width:getActiveWidth()},timeout,function(){locked = false;});
 				}
 			}
 		});
@@ -103,8 +140,6 @@ $(function(){
 				locked = false;
 			}
 		}
-		
-		
 		
 		return aliment;
 	}

@@ -10,7 +10,10 @@ class AlimentModel extends CI_Model {
 		foreach($rootCats as $cat) {
 			$aliments []= array(
 				'bg'	=> base_url().'images/aliments/bg-'.$cat->id.'.png',
-				'title'	=> $cat->name,
+				'name'	=> $cat->name,
+				'title'	=> $cat->title,
+				'descr'	=> $cat->descr,
+				'url'	=> $cat->url,
 			);
 		}
 		return $aliments;

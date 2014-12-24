@@ -691,15 +691,17 @@ footer a:hover{
 	background-repeat:no-repeat;
 	background-position:50% 50%;
 	background-size:cover;
+	position:relative;
+	cursor:pointer;
 }
 .aliment-item .shirma{
 	display:block;
 	width:100%;
 	height:100%;
-	background-color:rgba(0,0,0,.7);
+	background-color:rgba(0,0,0,.9);
 	overflow:hidden;
 }
-.aliment-item .shirma .icon-dark {
+.aliment-item .icon-dark {
 	width:160px;
 	height:80px;
 	margin-left:auto;
@@ -707,12 +709,41 @@ footer a:hover{
 	padding-top:1px;
 	background-image:url(../images/aliment-icons.png);
 	background-repeat:no-repeat;
+	color:#fff;
 }
-.aliment-item .shirma .icon-dark span {
+.aliment-item .icon-dark span , .aliment-item .icon-light span{
 	display:block;
 	width:160px;
 	margin-top:85px;
-	text-align:center;
-	color:#fff;
+	font-size:9pt;
 	text-transform: uppercase;
+	text-align:center;
+}
+.aliment-item .icon-light-box {
+	width:230px;
+	height:132px;
+	margin:0 auto;
+	background:url(../images/aliment-hover-top.png) 50% 50% no-repeat;
+	background-size:cover;
+	overflow:hidden;
+	position:absolute;
+}
+.aliment-item .icon-light {
+	width:160px;
+	height:80px;
+	margin:10px auto auto;
+	padding-top:1px;
+	background-image:url(../images/aliment-icons.png);
+	background-repeat:no-repeat;
+	color:#aeb1b5;
+}
+.aliment-item  .aliment-info {
+	width:100%;
+	background:url(../images/aliment-hover-bot.png) 50% 0% no-repeat;
+	background-size:100% auto;
+	position:absolute;
+	color:#aeb1b5;
+}
+.aliment-info .aliment-title {
+	margin-top: 17%;
 }
