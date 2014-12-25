@@ -143,6 +143,6 @@ $(function(){
 		
 		return aliment;
 	}
-	$('.aliment').aliment(250);
+	$('.aliment').aliment(150);
 
 });	
