@@ -27,12 +27,12 @@ $(function(){
 			var $this = $(this);
 			$this.find('.shirma').fadeOut(timeout);
 			$this.find('.icon-light-box')
-				.delay(timeout)
+		//		.delay(timeout)
 				.animate({
 					top:'0px',
 				},timeout);
 			$this.find('.aliment-info')
-				.delay(timeout)
+//				.delay(timeout)
 				.animate({
 					bottom:'0px',
 				},timeout);
@@ -41,7 +41,7 @@ $(function(){
 			var $this = $(this),
 				$iconBox = $this.find('.icon-light-box'),
 				$alimentInfo = $this.find('.aliment-info');
-			$this.find('.shirma').delay(timeout).fadeIn(timeout);
+			$this.find('.shirma')/*.delay(timeout)*/.fadeIn(timeout);
 			$iconBox.animate({top:'-'+$iconBox.height()+'px'},timeout);
 			$alimentInfo.animate({bottom:'-'+$alimentInfo.height()+'px'},timeout);
 		}
@@ -85,10 +85,10 @@ $(function(){
 						if(self){
 							locked = true;
 							$(self).hoverOff();
-							items.slice(1).delay(timeout).animate(
+							items.slice(1)/*.delay(timeout)*/.animate(
 								{width : getStandardWidth()},
 								timeout,'linear');
-							items.eq(0).delay(timeout).animate(
+							items.eq(0)/*.delay(timeout)*/.animate(
 								{width : aliment.width() - (items.length-1)*getStandardWidth()},
 								timeout,'linear',
 								function(){locked = false;});
@@ -117,10 +117,10 @@ $(function(){
 					newSelf(this);
 					items.each(function(){
 						if(this != self){
-							$(this).delay(timeout).animate({width:getUnactiveWidth()},timeout);
+							$(this)/*.delay(timeout)*/.animate({width:getUnactiveWidth()},timeout);
 						}
 					});
-					$(this).delay(timeout).animate({width:getActiveWidth()},timeout,function(){locked = false;});
+					$(this)/*.delay(timeout)*/.animate({width:getActiveWidth()},timeout,function(){locked = false;});
 				}
 			}
 		});
@@ -143,6 +143,6 @@ $(function(){
 		
 		return aliment;
 	}
-	$('.aliment').aliment(150);
+	$('.aliment').aliment(250);
 
 });	

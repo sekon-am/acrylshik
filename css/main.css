@@ -96,24 +96,21 @@ header{
 	width:654px;
 	min-width:654px;
 	height:225px;
-	transition: transform 0.5s;
+	transition: transform 0.1s;
 }
 #logo:hover img{
 	transform: scale(1.01,1.01);
 }
 .main-menu-element {
 	text-decoration:none;
-	font-size:11pt;
-	color:#86dbd4;
+	font-size:12pt;
+	color:#ee0;
 }
 .main-menu-element:hover {
-	color:#8af4f8;
+	color:#ff0;
 }
 .main-menu-element span {
 	text-align:center;
-}
-.header-block {
-	overflow:hidden;
 }
 @media screen and (min-width:1601px){
 	.header-block {
@@ -176,7 +173,7 @@ header{
 		background-image: url(../images/icons.png);
 		background-repeat: no-repeat;
 		overflow:hidden;
-		transition: transform 0.5s;
+		transition: transform 0.1s;
 	}
 	.main-menu-element:hover {
 		background: url(../images/icons.png) no-repeat,url(../images/icons.png) no-repeat;
@@ -212,6 +209,11 @@ header{
 	display:inline-block;
 }
 
+.header-block:after {
+	display:block;
+	content:"";
+	clear:both;
+}
 .header-hr {
 	width:100%;
 	height:4px;
@@ -329,7 +331,7 @@ header{
 	overflow:hidden;
 	cursor:pointer;
 	text-shadow:0 0 3px #03a095;
-	transition: transform 0.5s;
+	transition: transform 0.1s;
 }
 .subcategory:hover .icon {
 	background-image:url(../images/icons.png),url(../images/icons.png);
@@ -414,7 +416,7 @@ header{
 	background-repeat:no-repeat;
 	background-size:cover;
 	cursor:pointer;
-	transition: transform 0.5s;
+	transition: transform 0.1s;
 }
 .our-works .icon:hover {
 	transform: scale(1.3,1.3);
@@ -674,7 +676,7 @@ footer a:hover{
 	background-repeat:no-repeat;
 	background-size:cover;
 	position:absolute;
-	transition: transform 0.5s;
+	transition: transform 0.1s;
 }
 .product-img-box .product-img:hover {
 	cursor:pointer;
