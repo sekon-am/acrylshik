@@ -1,30 +1,53 @@
 $(function(){
-	var subMenuDelay = 300,
+	var subMenuDelayEnd = 400,
+		subMenuDelayStart = 0,
+		subMenuDelayDelta = function (len) {
+								return Math.round((subMenuDelayEnd-subMenuDelayStart)/len);
+							}
 		$subMenu = null;
 	$('[data-category-show]').click(function(){
 		var catId = $(this).attr('data-category-show');
 		if($subMenu){
-			$subMenu.animate(
-				{opacity:0},
-				subMenuDelay,
-				'swing',
-				function(){
-					$subMenu.hide();
-					$subMenu = $('.sub-menu[data-category="'+catId+'"]')
-						.show()
-						.css({opacity:0})
+			var $subMenuElements = $subMenu.find('a'),
+				subMenuDelta = subMenuDelayDelta($subMenuElements.length),
+				subMenuDelay = subMenuDelayStart;
+			
+			$subMenuElements.each(
+				function() {
+					$(this)
+						.css({opacity:1})
 						.animate(
-							{opacity:1},
-							subMenuDelay,
-							'swing',
-							function (){}
+							{opacity:0},
+							subMenuDelay
 						);
+					subMenuDelay+=subMenuDelta;
 				}
 			);
+			$subMenu
+				.delay(subMenuDelayEnd)
+				.hide(0,
+					function(){
+						$subMenu = $('.sub-menu[data-category="'+catId+'"]').show();
+						var $subMenuElements = $subMenu.find('a'),
+							subMenuDelta = subMenuDelayDelta($subMenuElements.length),
+							subMenuDelay = subMenuDelayEnd-subMenuDelta;
+						$subMenuElements.css({opacity:0}).each(
+							function() {
+								console.log(subMenuDelay);
+								$(this)
+									.animate(
+										{opacity:1},
+										subMenuDelay
+									);
+								subMenuDelay-=subMenuDelta;
+							}
+						);
+					}
+				);
 		}else{
 			$subMenu = $('.sub-menu[data-category="'+catId+'"]')
 				.css({opacity:1})
-				.slideDown(subMenuDelay);
+				.slideDown(300);
 		}
 		return false;
 	});
