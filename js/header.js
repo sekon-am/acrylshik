@@ -33,7 +33,6 @@ $(function(){
 							subMenuDelay = subMenuDelayEnd-subMenuDelta;
 						$subMenuElements.css({opacity:0}).each(
 							function() {
-								console.log(subMenuDelay);
 								$(this)
 									.animate(
 										{opacity:1},
