@@ -1,9 +1,9 @@
 <?php 
 class CategoryModel extends CI_Model {
-	function _getChildrenRes($id) {
+	function _getChildrenRes($id,$order='ASC') {
 		$sql = ($id==0) ? 
-			"SELECT * FROM categories WHERE ISNULL(parent_id)" : 
-			"SELECT * FROM categories WHERE parent_id='{$id}'";
+			"SELECT * FROM categories WHERE ISNULL(parent_id) ORDER BY id {$order}" : 
+			"SELECT * FROM categories WHERE parent_id='{$id}' ORDER BY id {$order}";
 		return $this->db->query($sql);
 	}
 	function _normCategory(&$category) {
@@ -13,6 +13,8 @@ class CategoryModel extends CI_Model {
 		}else{
 			$category->url = site_url('product/index/'.$category->id);
 		}
+		$category->position->x = ($category->img_position % 6) * 160;
+		$category->position->y = floor($category->img_position / 6) * 160;
 		return $category;
 	}
 	function getCategory($category_id) {
@@ -22,11 +24,19 @@ class CategoryModel extends CI_Model {
 		}
 		return $this->_normCategory($category->row());
 	}
-	function getSubcategories($id=0) {
-		$categories = $this->_getChildrenRes($id)->result();
+	function getSubcategories($id=0,$order='ASC') {
+		$categories = $this->_getChildrenRes($id,$order)->result();
 		for($i=0;$i<count($categories);$i++){
 			$this->_normCategory($categories[$i]);
 		}
 		return $categories;
+	}
+	function getRootSubcategories() {
+		$rootCats = $this->getSubcategories();
+		$subcats = array();
+		foreach($rootCats as $rootCat) {
+			$subcats[$rootCat->id] = $this->getSubcategories($rootCat->id);
+		}
+		return $subcats;
 	}
 }

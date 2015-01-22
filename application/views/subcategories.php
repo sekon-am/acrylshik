@@ -7,7 +7,7 @@
 		<div class="subcategories block-wrap">
 <?php foreach($categories as $category): ?>
 			<div class="subcategory">
-				<div class="icon" style="background:url(<?php echo $category->img; ?>) no-repeat;" data-link="<?php echo $category->url; ?>">
+				<div class="icon" style="background-position:-<?php echo $category->position->x; ?>px -<?php echo $category->position->y; ?>px;" data-link="<?php echo $category->url; ?>">
 					<a href="<?php echo $category->url; ?>">
 						<h2><?php echo $category->name; ?></h2>
 					</a>

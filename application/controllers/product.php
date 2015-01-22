@@ -10,8 +10,8 @@ class Product extends CI_Controller {
 	}
 	function lst($category_id) {
 		$category_id = intval($category_id);
-		$category = $this->CategoryModel->getCategory($category_id);
 		$products = $this->ProductModel->lst($category_id);
+		$category = $this->CategoryModel->getCategory($category_id);
 		load_module('header');
 		$this->load->view(	'products',
 							array(	'products'=>$products,
