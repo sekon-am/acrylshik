@@ -80,7 +80,7 @@ $autoload['helper'] = array('url','config','module');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('acrylshik');
 
 
 /*

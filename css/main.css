@@ -473,41 +473,33 @@ header{
 	width:100%;
 }
 
-.articles .content {
+.articles {
 	margin: 45px auto;
-	text-align: justify;
-	text-indent:20px;
-	line-height:1.7;
-	-webkit-column-gap: 40px;
-	-moz-column-gap: 40px;
-	column-gap: 40px;
-	-webkit-column-rule: 1px solid #ccc;
-	-moz-column-rule: 1px solid #ccc;
-	column-rule: 1px solid #ccc;
+	text-align: left;
+	vertical-align: text-top;
 }
-@media screen and (min-width:1601px) {
-	.articles .content {
-		-webkit-column-count: 4;
-		-moz-column-count: 4;
-		column-count: 4;
-	}
+.articles .article {
+	display:inline-block;
+	width:300px;
+	margin:30px 8px;
+	vertical-align: text-top;
+	color:#777;
 }
-@media screen and (min-width:961px) and (max-width:1600px) {
-	.articles .content {
-		-webkit-column-count: 3;
-		-moz-column-count: 3;
-		column-count: 3;
-	}
+.articles .article .image {
 }
-@media screen and (min-width:641px) and (max-width:960px) {
-	.articles .content {
-		-webkit-column-count: 2;
-		-moz-column-count: 2;
-		column-count: 2;
-	}
+.articles .article a{
+	display:block;
+	margin:10px auto;
+	font-size: 16pt;
+	text-decoration:none;
+	color:#000;
+}
+.articles .article .sign {
+	margin:10px auto;
 }
 .go-top{
 	display:block;
+	clear:both;
 	width:42px;
 	height:42px;
 	margin: 45px auto -3px;
@@ -518,11 +510,14 @@ header{
 	text-decoration:none;
 	cursor:pointer;
 	text-align:center;
+	text-indent:0;
 }
 .go-top:hover{
 	color:#eee;
 }
-
+.go-top span{
+	float:none;
+}
 footer{
 	color:#aaa;
 }
