@@ -12,8 +12,13 @@ class Articles extends CI_Controller {
 	function show($id) {
 		load_module('header');
 		$this->load->view('article',array(
-			'article'	=> $this->ArticleModel->getArticle($id),
+			'article'		=> $this->ArticleModel->getArticle($id),
+			'articlePrev'	=> $this->ArticleModel->getArticle($this->session->userdata('articlePrev')),
 		));
+		$this->session->userdata(
+			'articlePrev',
+			$this->session->userdata('articlePrev')
+		);
 		load_module('footer');
 	}
 }

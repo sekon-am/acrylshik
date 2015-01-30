@@ -475,7 +475,7 @@ header{
 
 .articles {
 	margin: 45px auto;
-	text-align: left;
+	text-align: center;
 	vertical-align: text-top;
 }
 .articles .article {
@@ -483,9 +483,22 @@ header{
 	width:300px;
 	margin:30px 8px;
 	vertical-align: text-top;
-	color:#777;
+	color:#999;
 }
-.articles .article .image {
+@media screen and (max-width:640px){
+	.articles .article .image {
+		height:140px;
+	}
+}
+@media screen and (min-width:641px) and (max-width:1280px){
+	.articles .article .image {
+		height:210px;
+	}
+}
+@media screen and (min-width:1281px){
+	.articles .article .image {
+		height:280px;
+	}
 }
 .articles .article a{
 	display:block;
@@ -494,9 +507,96 @@ header{
 	text-decoration:none;
 	color:#000;
 }
-.articles .article .sign {
+.article {
+	margin:85px auto;
+	text-align:left;
+	color:#888;
+}
+@media screen and (max-width:640px){
+	.article {
+		margin:35px auto;
+	}
+}
+@media screen and (min-width:641px){
+	.article {
+		margin:75px auto;
+	}
+}
+.article .sign {
 	margin:10px auto;
 }
+.article .image {
+	width:100%;
+	background-size:cover;
+	background-position:50% 50%;
+	background-repeat:no-repeat;
+}
+@media screen and (max-width:320px){
+	.article .image {
+		height:70px;
+	}
+}
+@media screen and (min-width:321px) and (max-width:640px){
+	.article .image {
+		height:140px;
+	}
+}
+@media screen and (min-width:641px) and (max-width:960px){
+	.article .image {
+		height:210px;
+	}
+}
+@media screen and (min-width:961px) and (max-width:1280px){
+	.article .image {
+		height:280px;
+	}
+}
+@media screen and (min-width:1281px) and (max-width:1600px){
+	.article .image {
+		height:350px;
+	}
+}
+@media screen and (min-width:1601px) {
+	.article .image {
+		height:400px;
+	}
+}
+.article h1 {
+	margin: 20px auto 10px;
+	font-size:16pt;
+	color:#000;
+}
+.article .hr {
+	border-top:1px solid #aaa;
+	margin:10px auto;
+	background-image:none;
+}
+.article .txt {
+	margin:20px auto 35px;
+	line-height:1.5;
+	text-indent:15px;
+}
+.article .txt p {
+	margin-top:10px;
+}
+.tags{
+	color:#555;
+}
+.tags .tag {
+	display:inline-block;
+	background-color:#ccc;
+	border-radius:2px;
+	text-decoration:none;
+	color:#555;
+}
+.tags .tag:hover {
+	background-color:#bbb;
+}
+.tags .tag span {
+	display:block;
+	margin: 3px 13px;
+}
+
 .go-top{
 	display:block;
 	clear:both;

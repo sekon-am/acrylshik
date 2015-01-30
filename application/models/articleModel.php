@@ -1,8 +1,21 @@
 <?php
 class ArticleModel extends CI_Controller {
+	function __construct() {
+		parent::__construct();
+		$this->load->model('CategoryModel');
+		$this->load->model('TagModel');
+	}
+	function _normArticle($article) {
+		$article->img = (($article->img)?site_url($this->config->item('img_products_path').$article->img):'');
+		$article->category = $this->CategoryModel->getCategory($article->category_id)->name;
+		$article->sign = $article->category . '   /   ' . date('F j, Y', strtotime($article->posted));
+		$article->url = site_url("articles/show/".$article->id);
+		$article->tags = $this->TagModel->getArticleTags($article->id);
+		return $article;
+	}
 	function getArticle($id) {
 		if($article = $this->db->query("SELECT * FROM articles WHERE id='{$id}'")->row()) {
-			return $article;
+			return $this->_normArticle($article);
 		}
 		return null;
 	}
@@ -10,13 +23,7 @@ class ArticleModel extends CI_Controller {
 		$articles = array();
 		if($articlesQuery = $this->db->query("SELECT * FROM articles ORDER BY posted ASC LIMIT 0,".$this->config->item('articles_per_page'))){
 			foreach($articlesQuery->result() as $row) if($row) {
-				$row->img = $this->config->item('img_folder_path').$row->img;
-				if($cat = $this->db->query("SELECT name FROM categories WHERE id='{$row->category_id}'")->row()){
-					$row->sign = $cat->name . '   /   ';
-				}
-				$row->sign .= date('F j, Y', strtotime($row->posted));
-				$row->url = site_url("articles/show/".$row->id);
-				$articles []= $row;
+				$articles []= $this->_normArticle($row);
 			}
 		}
 		return $articles;
