@@ -28,4 +28,23 @@ class ArticleModel extends CI_Controller {
 		}
 		return $articles;
 	}
+	function getRelated($id){
+		$relQuery = $this->db->query("SELECT related FROM articles WHERE id='{$id}'");
+		if($relQuery->num_rows()) {
+			$sql = "SELECT * FROM articles WHERE 0";
+			foreach(explode(',',$relQuery->row()->related) as $relId) 
+				if($relId = trim( $relId )) {
+					$sql .= " OR (id='{$relId}')";
+				}
+			$articlesQuery = $this->db->query($sql . " ORDER BY posted");
+			if($articlesQuery->num_rows()){
+				$articles = array();
+				foreach($articlesQuery->result() as $article ){
+					$articles []= $this->_normArticle($article);
+				}
+				return $articles;
+			}
+		}
+		return null;
+	}
 }

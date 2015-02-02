@@ -2,16 +2,19 @@
 	<?php if($article->img): ?>
 	<div class="image" style="background-image:url(<?php echo $article->img; ?>);"></div>
 	<?php endif; ?>
-	<h1><?php echo $article->title; ?></h1>
+	<h1 class="maintitle"><?php echo $article->title; ?></h1>
 	<div class="sign"><?php echo $article->category; ?>&nbsp;/&nbsp;<?php echo $article->posted; ?></div>
 	<div class="hr"></div>
 	<div class="txt"><?php echo $article->txt; ?></div>
+	<?php if(count($article->tags)): ?>
 	<div class="tags">
-		<?php echo lang('TAGS'); ?>:
+		<span class="title"><?php echo lang('TAGS'); ?>:</span>
 		<?php foreach($article->tags as $tag): ?>
 		<a class="tag" href="<?php echo $tag->url; ?>"><span><?php echo $tag->name; ?></span></a>
 		<?php endforeach; ?>
 	</div>
+	<?php endif; ?>
+	<?php if($articlePrev): ?>
 	<div class="prev-article">
 		<div class="image" style="background-image:url(<?php echo $articlePrev->img; ?>);"></div>
 		<h2><?php echo $articlePrev->img; ?></h2>
@@ -19,6 +22,24 @@
 		<div class="hr"></div>
 		<div class="txt"><?php echo $articlePrev->txt; ?></div>
 	</div>
-	<div>
+	<?php endif; ?>
+	<?php if(count($related)): ?>
+	<div class="related">
+		<div class="button" id="relative-next">&gt;</div>
+		<div class="button" id="relative-prev">&lt;</div>
+		<div class="title"><?php echo lang('Relative articles'); ?></div>
+		<?php $relCounter = 0;
+		foreach($related as $rel): ?>
+		<div class="rel-article<?php if($relCounter++ >= $this->config->item('related_articles')) { ?> hidden<?php } ?>">
+			<div class="image-wrap">
+				<div class="image" 
+					style="background-image:url(<?php echo $rel->img; ?>);"
+					data-link="<?php echo $rel->url; ?>">
+				</div>
+			</div>
+			<a href="<?php echo $rel->url; ?>"><h2><?php echo $rel->title; ?></h2></a>
+		</div>
+		<?php endforeach; ?>
 	</div>
+	<?php endif; ?>
 </article>
