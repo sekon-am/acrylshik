@@ -8,7 +8,7 @@ $(
 			if(windowWidth<659) {
 				marginLeft = (windowWidth-659)/2;
 			}
-			$('#logo').css({'margin-left':marginLeft+'px'});
+//			$('#logo').css({'margin-left':marginLeft+'px'});
 		} makeLogoLeft();
 		$(window).resize(makeLogoLeft);
 		

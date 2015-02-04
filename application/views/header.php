@@ -23,7 +23,7 @@
 <body>
 	<header class="block-wide">
 		<div class="header-block">
-			<a href="<?php echo get_config_item('base_url'); ?>" id="logo"><img src="<?php echo get_config_item('base_url'); ?>images/logo.png" alt="" title=""/></a>
+			<a href="<?php echo get_config_item('base_url'); ?>" id="logo" style="background-image:url(/images/logo-<?php echo ((is_home())?'large':'small'); ?>.png);"></a>
 			<nav class="main-menu block-wrap">
 <?php foreach($categories as $cat): ?>
 				<a href="<?php echo $cat->url; ?>" class="main-menu-element" title="<?php echo $cat->title; ?>" style="background-position: -<?php echo $cat->position->x; ?>px -<?php echo $cat->position->y; ?>px" data-category-show="<?php echo $cat->id; ?>">
