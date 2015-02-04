@@ -13,6 +13,16 @@ class ArticleModel extends CI_Controller {
 		$article->tags = $this->TagModel->getArticleTags($article->id);
 		return $article;
 	}
+	function _getArticles($sql) {
+		$articles = array();
+		$articlesQuery = $this->db->query($sql);
+		if($articlesQuery->num_rows()){
+			foreach($articlesQuery->result() as $article ){
+				$articles []= $this->_normArticle($article);
+			}
+		}
+		return $articles;
+	}
 	function getArticle($id) {
 		if($article = $this->db->query("SELECT * FROM articles WHERE id='{$id}'")->row()) {
 			return $this->_normArticle($article);
@@ -20,13 +30,9 @@ class ArticleModel extends CI_Controller {
 		return null;
 	}
 	function getLastest() {
-		$articles = array();
-		if($articlesQuery = $this->db->query("SELECT * FROM articles ORDER BY posted ASC LIMIT 0,".$this->config->item('articles_per_page'))){
-			foreach($articlesQuery->result() as $row) if($row) {
-				$articles []= $this->_normArticle($row);
-			}
-		}
-		return $articles;
+		return $this->_getArticles(
+				"SELECT * FROM articles ORDER BY posted ASC LIMIT 0,".$this->config->item('articles_per_page')
+			);
 	}
 	function getRelated($id){
 		$relQuery = $this->db->query("SELECT related FROM articles WHERE id='{$id}'");
@@ -36,15 +42,15 @@ class ArticleModel extends CI_Controller {
 				if($relId = trim( $relId )) {
 					$sql .= " OR (id='{$relId}')";
 				}
-			$articlesQuery = $this->db->query($sql . " ORDER BY posted");
-			if($articlesQuery->num_rows()){
-				$articles = array();
-				foreach($articlesQuery->result() as $article ){
-					$articles []= $this->_normArticle($article);
-				}
-				return $articles;
-			}
+			return $this->_getArticles($sql . " ORDER BY posted");
 		}
-		return null;
+		return array();
+	}
+	function getArticlesByTag($tagId,$start=0){
+		if($tagId){
+			$count = $this->config->item('articles_per_page');
+			return $this->_getArticles("SELECT DISTINCT a.* FROM articles a, article_tags at, tags t WHERE (a.id=at.article_id) AND (at.tag_id='{$tagId}') ORDER BY a.posted LIMIT {$start},{$count}");
+		}
+		return array();
 	}
 }

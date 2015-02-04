@@ -16,7 +16,14 @@ class Articles extends CI_Controller {
 			'articlePrev'	=> $this->ArticleModel->getArticle($this->session->userdata('articlePrev')),
 			'related'		=> $this->ArticleModel->getRelated($id),
 		));
-		$this->session->userdata('articlePrev',$id);
+		$this->session->set_userdata('articlePrev',$id);
+		load_module('footer');
+	}
+	function tag($tagId) {
+		load_module('header');
+		$this->load->view('articles',array(
+			'articles'	=> $this->ArticleModel->getArticlesByTag($tagId),
+		));
 		load_module('footer');
 	}
 }

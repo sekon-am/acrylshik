@@ -16,11 +16,13 @@
 	<?php endif; ?>
 	<?php if($articlePrev): ?>
 	<div class="prev-article">
-		<div class="image" style="background-image:url(<?php echo $articlePrev->img; ?>);"></div>
-		<h2><?php echo $articlePrev->img; ?></h2>
+		<div class="image-wrap">
+			<div class="image" style="background-image:url(<?php echo $articlePrev->img; ?>);" data-link="<?php echo $articlePrev->url; ?>"></div>
+		</div>
+		<a href="<?php echo $articlePrev->url; ?>"><h2><?php echo $articlePrev->title; ?></h2></a>
 		<div class="sign"><?php echo $articlePrev->category; ?>&nbsp;/&nbsp;<?php echo $articlePrev->posted; ?></div>
 		<div class="hr"></div>
-		<div class="txt"><?php echo $articlePrev->txt; ?></div>
+		<div class="short"><?php echo $articlePrev->short; ?></div>
 	</div>
 	<?php endif; ?>
 	<?php if(count($related)): ?>
