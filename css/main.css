@@ -65,14 +65,63 @@ article{
 		width:1920px;
 			}
 }
+@media screen and (max-width:640px){
+	body{
+		font-size:9pt;
+	}
+	h1,.h1{
+		font-size:15pt;
+	}
+	h2,.tags .title{
+		font-size:13pt;
+	}
+	h3,.h1-descr{
+		font-size:11pt;
+	}
+	h4,h4,h6{
+		font-size:10pt;
+	}
+}
+@media screen and (min-width:641px)and (max-width:1280px){
+	body{
+		font-size:10pt;
+	}
+	h1,.h1{
+		font-size:20pt;
+	}
+	h2,.tags .title{
+		font-size:15pt;
+	}
+	h3,.h1-descr{
+		font-size:13pt;
+	}
+	h4,h4,h6{
+		font-size:11pt;
+	}
+}
+@media screen and (min-width:1281px){
+	body{
+		font-size:11pt;
+	}
+	h1,.h1{
+		font-size:24pt;
+	}
+	h2,.tags .title{
+		font-size:16pt;
+	}
+	h3,.h1-descr{
+		font-size:14pt;
+	}
+	h4,h4,h6{
+		font-size:12pt;
+	}
+}
 .h1 {
 	margin: 45px auto 5px;
-	font-size: 34pt;
 	text-align:center;
 }
 .h1-descr {
 	margin: 5px auto 15px;
-	font-size: 16pt;
 	text-align:center;
 }
 .hr, .hr-light {
@@ -291,7 +340,6 @@ header{
  ************/
 .subcategories{
 	margin:45px auto;
-	font-size:11pt;
 	text-align:center;
 }
 .subcategories:after{
@@ -355,7 +403,6 @@ header{
 	width:110px;
 	margin:80px auto auto;
 	text-align:center;
-	font-size: 11pt;
 	color:#fff;
 	text-decoration: none;
 }
@@ -384,7 +431,6 @@ header{
 	overflow:hide;
 	cursor:pointer;
 	color:#aaa;
-	font-size: 12pt;
 }
 .subcategory .more .arrow {
 	float:right;
@@ -522,7 +568,6 @@ header{
 .articles .article a{
 	display:block;
 	margin:10px auto;
-	font-size: 16pt;
 	text-decoration:none;
 	color:#000;
 }
@@ -585,7 +630,6 @@ header{
 }
 .article h1.maintitle {
 	margin: 40px auto 10px;
-	font-size:16pt;
 	color:#000;
 }
 .article .hr {
@@ -616,7 +660,6 @@ header{
 .tags .title{
 	display:block;
 	margin-bottom:15px;
-	font-size:14pt;
 }
 .tags .tag {
 	display:inline-block;
@@ -654,9 +697,6 @@ header{
 	.prev-article h2,.prev-article .sign,.prev-article .hr,.prev-article .short{
 		margin-left:220px;
 	}
-	.prev-article h2{
-		font-size:13pt;
-	}
 }
 .related {
 	margin: 40px auto;
@@ -682,7 +722,6 @@ header{
 }
 .related .title {
 	margin-bottom:15px;
-	font-size:14pt;
 	text-align:left;
 	color:#555;
 }
@@ -708,7 +747,6 @@ header{
 	margin-top:3px;
 	padding-top:1px;
 	color:#555;
-	font-weight:bold;
 }
 @media screen and (max-width:960px) {
 	.rel-article h2 {
@@ -757,31 +795,24 @@ footer a:hover{
 	margin-left:10px !important;
 }
 .footer-top .block-wrap {
-	margin: 30px auto;
 	overflow:hidden;
 }
 .footer-column {
+	margin: 40px auto;
 	text-align:left;
 }
-.footer-column.articles {
-	margin-top:auto;
-}
-@media screen and (min-width:641px){
+@media screen and (min-width:961px){
 	.footer-column {
-		display:block;
 		float:left;
 		width:30%;
 	}
 	.works {
-		margin:auto 5%;
+		margin-left:5%;
+		margin-right:5%;
 	}
 }
-@media screen and (max-width:640px){
+@media screen and (max-width:960px){
 	.footer-column {
-		display:none;
-	}
-	.works {
-		display:block;
 	}
 }
 .footer-column .text-list-item{
@@ -790,7 +821,6 @@ footer a:hover{
 }
 .footer-top h4 {
 	margin-bottom:10px;
-	font-size:14pt;
 }
 .footer-bottom {
 	overflow:hidden;
@@ -849,7 +879,7 @@ footer a:hover{
 @media screen and (min-width:641px) {
 	.category-name {
 		margin: auto 35% auto 60px;
-		font-size: 24pt;
+/*		font-size: 24pt;*/
 	}
 	.category-title {
 		margin: auto 35% auto 60px;
@@ -866,7 +896,7 @@ footer a:hover{
 }
 @media screen and (max-width:640px) {
 	.category-name {
-		font-size: 18pt;
+/*		font-size: 18pt;*/
 	}
 	.category-descr {
 		display:none;
@@ -875,6 +905,7 @@ footer a:hover{
 
 .product {
 	margin-top:50px;
+	margin-bottom:50px;
 	text-align:left;
 }
 .product:after {
@@ -907,19 +938,11 @@ footer a:hover{
 	text-shadow: 0 0 1px #000;
 }
 @media screen and (min-width:641px) {
-	.product-title {
-		font-size: 18pt;
-	}
 	.lshift {
 		margin-left:320px;
 	}
 	.rshift{
 		margin-right:320px;
-	}
-}
-@media screen and (max-width:640px) {
-	.product-title {
-		font-size: 16pt;
 	}
 }
 .warning-message{

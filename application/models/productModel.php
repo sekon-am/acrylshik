@@ -1,15 +1,19 @@
 <?php 
 class ProductModel extends CI_Model {
 	function _prepare(&$product) {
-		$product->images = array();
-		$images_req = $this->db->query("SELECT * FROM product_images WHERE product_id='{$product->id}'");
-		if($images_req->num_rows()) {
-			foreach($images_req->result() as $image) {
-				$product->images []= base_url().'images/products/'.$image->img;
+		if($product){
+			$product->images = array();
+			$images_req = $this->db->query("SELECT * FROM product_images WHERE product_id='{$product->id}'");
+			if($images_req->num_rows()) {
+				foreach($images_req->result() as $image) {
+					$product->images []= base_url().'images/products/'.$image->img;
+				}
+				shuffle($product->images);
 			}
-			shuffle($product->images);
+			$product->url = site_url('product/show/'.$product->id);
+			return $product;
 		}
-		return $product;
+		return null;
 	}
 	function _prepareArray(&$products){
 		if(is_array($products)) {
@@ -28,18 +32,25 @@ class ProductModel extends CI_Model {
 		return $products;
 	}
 	function details($product_id) {
-		$prod_req = $this->db->query("SELECT * FROM products WHERE product_id='{$product->id}'");
+		$prod_req = $this->db->query("SELECT * FROM products WHERE id='{$product_id}'");
 		if($prod_req->num_rows()) {
 			return $this->_prepare($prod_req->row());
 		}
 		return null;
 	}
-	function getRandomProducts($category_id,$amount) {
+	function getRandomProducts($category_id=0,$amount=0) {
+		$sql = "SELECT * FROM products";
 		if($category_id ){
-			$products_req = $this->db->query("SELECT * FROM products WHERE category_id='{$category_id}' LIMIT 0,{$amount}");
-			if($products_req->num_rows()==$amount){
-//				products
-			}
+			$sql .= " WHERE category_id='{$category_id}'";
 		}
+		$sql .= " ORDER BY RAND()";
+		if($amount){
+			$sql .= " LIMIT 0,{$amount}";
+		}
+		$productsReq = $this->db->query( $sql );
+		if($productsReq->num_rows()){
+			return $this->_prepareArray($productsReq->result());
+		}
+		return null;
 	}
 }

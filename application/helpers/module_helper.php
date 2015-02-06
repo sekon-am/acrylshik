@@ -33,9 +33,7 @@ if( !function_exists( 'load_module' ) ) {
 		$CI = new $class();
 		$EXT->_call_hook('post_controller_constructor');
 
-		if ( ! in_array(strtolower($method), array_map('strtolower', get_class_methods($CI)))
-			OR strncmp($method, '_', 1) == 0
-		){
+		if ( ! in_array(strtolower($method), array_map('strtolower', get_class_methods($CI))) ){
 			show_404("{$class}/{$method}");
 		}
 		call_user_func_array(array(&$CI, $method), $params);

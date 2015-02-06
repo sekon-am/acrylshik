@@ -53,4 +53,9 @@ class ArticleModel extends CI_Controller {
 		}
 		return array();
 	}
+	function randomArticles($amount) {
+		if($amount>0) {
+			return $this->_getArticles("SELECT * FROM articles ORDER BY rand() LIMIT {$amount}");
+		}
+	}
 }

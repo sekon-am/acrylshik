@@ -4,3 +4,5 @@ $config['img_folder_path'] = 'uploads/images/';
 $config['img_products_path'] = 'images/products/';
 $config['related_articles'] = 4;
 $config['articles_per_page'] = 5;
+$config['footer_articles_amount'] = 6;
+$config['footer_products_amount'] = 6;

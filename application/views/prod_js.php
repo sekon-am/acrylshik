@@ -1,0 +1,1 @@
+<script src="<?php echo get_config_item('base_url'); ?>js/products.js"></script>
