@@ -792,7 +792,11 @@ footer a:hover{
 	text-decoration:underline;
 }
 .footer-top a{
-	margin-left:10px !important;
+	display:block;
+	margin:5px auto 5px 10px;
+}
+.footer-top h4 {
+	font-weight:bold;
 }
 .footer-top .block-wrap {
 	overflow:hidden;
@@ -850,6 +854,7 @@ footer a:hover{
 		text-align:center;
 	}
 }
+
 
 /*
  * Products List

@@ -4,9 +4,7 @@
 				<div class="footer-column products">
 					<h4><?php echo lang('hothothot'); ?></h4>
 					<?php foreach ($products as $prod): ?>
-					<div class="text-list-item">
-						<a href="<?php echo $prod->url; ?>"><?php echo $prod->name; ?></a>
-					</div>
+					<a href="<?php echo $prod->url; ?>"><?php echo $prod->name; ?></a>
 					<?php endforeach; ?>
 				</div>
 				<div class="footer-column works">
@@ -15,9 +13,7 @@
 				<div class="footer-column articles">
 					<h4><?php echo lang('Articles'); ?></h4>
 					<?php foreach($articles as $article): ?>
-					<div class="text-list-item">
-						<a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a>
-					</div>
+					<a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a>
 					<?php endforeach; ?>
 				</div>
 			</div>
