@@ -1,0 +1,23 @@
+#login-form {
+	width:250px;
+	margin:50px auto auto;
+}
+#login-form .form-control {
+	margin:5px auto;
+}
+#login-form .btn {
+	text-align:center;
+}
+#login-form .form-signin-heading {
+	font-size:16pt;
+	text-align:center;
+}
+.main-body {
+	margin-top:50px;
+}
+.nav-sidebar{
+	background-color:#e7e7e7;
+}
+.nav-sidebar .active{
+	background-color:#ddd;
+}

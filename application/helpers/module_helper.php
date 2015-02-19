@@ -18,13 +18,12 @@ if( !function_exists( 'load_module' ) ) {
 
 		$EXT =& load_class('Hooks', 'core');
 		$BM =& load_class('Benchmark', 'core');
-
 		if ( ! file_exists(APPPATH.'controllers/'.$class.'.php')){
 			show_404("Can't find class {$class}");
 		}
 		include_once(APPPATH.'controllers/'.$class.'.php');
 		
-		$class = ucfirst($class);
+		$class = ucfirst(end(explode('/','/'.$class)));
 		if ( ! class_exists($class)){
 			show_404("Can't find {$class}");
 		}

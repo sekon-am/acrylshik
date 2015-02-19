@@ -31,14 +31,14 @@ class AuthModel extends CI_Model {
 			);
 		}
 		if(!$login){
-			_unset_user();
+			$this->_unset_user();
 			return array(
 				'code'=>201,
 				'msg' =>lang('msg_enter_login_pass'),
 			);
 		}
 		if(!$pass){
-			_unset_user();
+			$this->_unset_user();
 			return array(
 				'code'=>202,
 				'msg' =>lang('msg_enter_login_pass'),
@@ -47,21 +47,21 @@ class AuthModel extends CI_Model {
 		$pass=md5($pass);
 		$user_q = $this->db->query("SELECT  * FROM users WHERE (login='{$login}') AND (pass='{$pass}')");
 		if($user_q->num_rows() == 0) {
-			_unset_user();
+			$this->_unset_user();
 			return array(
 				'code'=>203,
 				'msg' =>lang('msg_wrong_login_pass'),
 			);
 		}
 		$user = $user_q->row();
-		_set_user($user->login,$user->role);
+		$this->_set_user($user->login,$user->role);
 		return array(
 			'code'=>100,
 			'user'=>$user,
 		);
 	}
 	function logout() {
-		_unset_user();
+		$this->_unset_user();
 	}
 }
 ?>
