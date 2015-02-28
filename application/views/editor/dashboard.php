@@ -1,10 +1,15 @@
-<?php load_module('admin/admin','_start'); ?>
-<?php load_module('admin/editor','_navbar'); ?>
-<div class="container main-body">
+<?php load_view('admin/start'); ?>
+<?php load_view('editor/navbar'); ?>
+<div class="container">
 	<div class="row">
-	<?php load_module('admin/editor','_welcome',$login); ?>
-	<?php load_module('admin/editor','_sidebar'); ?>
+		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+			<h1><?php echo lang('Welcome').$login; ?></h1>
+			<?php load_module('articles','dashboard'); ?>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+			<?php load_view('editor/sidebar'); ?>
+		</div>
 	</div>
 </div>
-<?php load_module('admin/admin','_finish'); ?>
+<?php load_view('admin/finish'); ?>
 

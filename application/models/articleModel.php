@@ -58,4 +58,19 @@ class ArticleModel extends CI_Controller {
 			return $this->_getArticles("SELECT * FROM articles ORDER BY rand() LIMIT {$amount}");
 		}
 	}
+	function getArticles($limit=0) {
+		$sql = "SELECT * FROM articles ORDER BY posted";
+		if($limit) {
+			$sql .= " LIMIT 0,{$limit}";
+		}
+		return $this->_getArticles($sql);
+	}
+	function addArticle($a) {
+		$sql = "INSERT INTO articles (category_id,title,txt,posted,short,related) VALUES ('{$a['category_id']}','{$a['title']}','{$a['txt']}','{$a['posted']}','{$a['short']}','{$a['related']}')";
+		$this->db->query($sql);
+		return $this->db->insert_id();
+	}
+	function delArticle($id) {
+		
+	}
 }

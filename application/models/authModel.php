@@ -20,14 +20,28 @@ class AuthModel extends CI_Model {
 			)
 		);
 	}
-	function check($role='admin') {
-		return ($this->session->userdata('user_role') == $role);
+	function checkUserRole($roles=array('admin','editor')) {
+		return in_array( $this->session->userdata('user_role'), $roles );
+	}
+	function checkEditor() {
+		if($this->checkUserRole()){
+			return true;
+		}else{
+			redirect('/authorize/login/');
+			return false;
+		}
+	}
+	function getUserName() {
+		return $this->session->userdata('user_login');
+	}
+	function getUserRole() {
+		return $this->session->userdata('user_login');
 	}
 	function login($login,$pass) {
 		if($this->session->userdata('user_login')){
 			return array(
 				'code'=>101,
-				'msg' =>'msg_already_logined',
+				'msg' =>lang('msg_already_logined'),
 			);
 		}
 		if(!$login){

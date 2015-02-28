@@ -42,3 +42,12 @@ if( !function_exists( 'load_module' ) ) {
 		$EXT->_call_hook('post_controller');
 	}
 }
+if(!function_exists('load_view')){
+	function load_view($name,$params=array()){
+		if(!file_exists(APPPATH.'views/'.$name.'.php')){
+			show_404("There is no view called {$name}");
+		}
+		$ci =& get_instance();
+		$ci->load->view($name,$params);
+	}
+}	

@@ -12,8 +12,12 @@
 	font-size:16pt;
 	text-align:center;
 }
-.main-body {
-	margin-top:50px;
+.errors {
+	margin: 15px auto;
+	padding: 5px;
+}
+body {
+	margin-top:65px !important;
 }
 .nav-sidebar{
 	background-color:#e7e7e7;
