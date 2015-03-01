@@ -6,6 +6,7 @@ class Editor extends CI_Controller {
 		$this->load->model('ArticleModel');
 	}
 	function dashboard() {
+		$this->AuthModel->checkEditor();
 		$this->load->view('editor/dashboard',array('login'=>$this->AuthModel->getUserName()));
 	}
 }

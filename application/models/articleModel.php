@@ -1,9 +1,11 @@
 <?php
 class ArticleModel extends CI_Controller {
+	var $permissions;
 	function __construct() {
 		parent::__construct();
 		$this->load->model('CategoryModel');
 		$this->load->model('TagModel');
+		$permissions = false;
 	}
 	function _normArticle($article) {
 		$article->img = (($article->img)?site_url($this->config->item('img_products_path').$article->img):'');
@@ -11,6 +13,10 @@ class ArticleModel extends CI_Controller {
 		$article->sign = $article->category . '   /   ' . date('F j, Y', strtotime($article->posted));
 		$article->url = site_url("articles/show/".$article->id);
 		$article->tags = $this->TagModel->getArticleTags($article->id);
+		if($this->permissions){
+			$article->edit_url = site_url("manarticle/edit/".$article->id);
+			$article->delete_url = site_url("manarticle/delete/".$article->id);
+		}
 		return $article;
 	}
 	function _getArticles($sql) {
@@ -72,5 +78,8 @@ class ArticleModel extends CI_Controller {
 	}
 	function delArticle($id) {
 		
+	}
+	function setPermissions() {
+		$this->permissions = true;
 	}
 }

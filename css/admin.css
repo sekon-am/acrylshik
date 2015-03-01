@@ -25,3 +25,9 @@ body {
 .nav-sidebar .active{
 	background-color:#ddd;
 }
+.table caption {
+	font-size:14pt;
+}
+.td-edit,.td-delete {
+	cursor:pointer;
+}

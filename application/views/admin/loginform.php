@@ -1,5 +1,5 @@
 <?php load_view('admin/start'); ?>
-<form action="<?php echo site_url("admin/authorize/login"); ?>" method="post" class="form-signin container" id='login-form'>
+<form action="<?php echo site_url("authorize/login"); ?>" method="post" class="form-signin container" id='login-form'>
 	<div class="form-signin-heading"><?php echo lang('Autorize please'); ?></div>
 	<?php if($msg): ?>
 	<div class="bg-danger errors"><?php echo $msg; ?></div>
