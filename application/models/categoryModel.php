@@ -17,6 +17,12 @@ class CategoryModel extends CI_Model {
 		$category->position->y = floor($category->img_position / 6) * 160;
 		return $category;
 	}
+	function _normCategories(&$categories) {
+		for($i=0;$i<count($categories);$i++){
+			$this->_normCategory($categories[$i]);
+		}
+		return $categories;
+	}
 	function getCategory($category_id) {
 		$category = $this->db->query("SELECT * FROM categories WHERE id='{$category_id}'");
 		if(!$category->num_rows()){
@@ -25,11 +31,7 @@ class CategoryModel extends CI_Model {
 		return $this->_normCategory($category->row());
 	}
 	function getSubcategories($id=0,$order='ASC') {
-		$categories = $this->_getChildrenRes($id,$order)->result();
-		for($i=0;$i<count($categories);$i++){
-			$this->_normCategory($categories[$i]);
-		}
-		return $categories;
+		return $this->_normCategories( $this->_getChildrenRes($id,$order)->result() );
 	}
 	function getRootSubcategories() {
 		$rootCats = $this->getSubcategories();
@@ -38,5 +40,8 @@ class CategoryModel extends CI_Model {
 			$subcats[$rootCat->id] = $this->getSubcategories($rootCat->id);
 		}
 		return $subcats;
+	}
+	function getCategories() {
+		return $this->_normCategories( $this->db->query("SELECT * FROM categories")->result() );
 	}
 }

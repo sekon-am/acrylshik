@@ -1,23 +1,35 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<form>
+<?php load_view('editor/input',array(
+	'label'=>'Title',
+	'type'=>'text',
+	'el'=>$article,
+	'f'=>'title',
+)); ?>
+<?php load_view('editor/select',array(
+	'label'	=> 'Category',
+	'items'	=> $categories,
+	'val'	=> 'name',
+	'selected'	=> $article->id,
+)); ?>
+<?php load_view('editor/textarea',array(
+	'label'=>'Text',
+	'el'=>$article,
+	'f'=>'txt',
+)); ?>
+<!--	<div class="form-group">
+		<label for=""><?php echo lang(''); ?></label>
+		<input type="text" class="form-control" id="" placeholder="<?php echo lang(''); ?>">
+	</div>
+	<div class="form-group">
+		<label for=""><?php echo lang(''); ?></label>
+		<input type="text" class="form-control" id="" placeholder="<?php echo lang(''); ?>">
+	</div>
+	<div class="form-group">
+		<label for=""><?php echo lang(''); ?></label>
+		<input type="text" class="form-control" id="" placeholder="<?php echo lang(''); ?>">
+	</div>
+	<div class="form-group">
+		<label for=""><?php echo lang(''); ?></label>
+		<input type="text" class="form-control" id="" placeholder="<?php echo lang(''); ?>">
+	</div>-->
+</form>

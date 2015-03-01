@@ -31,3 +31,10 @@ body {
 .td-edit,.td-delete {
 	cursor:pointer;
 }
+.modal {
+	background-color:rgba(0,0,0,0.7);
+	opacity: 1;
+}
+.modal-dialog{
+	margin-top:150px;
+}

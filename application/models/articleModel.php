@@ -77,7 +77,7 @@ class ArticleModel extends CI_Controller {
 		return $this->db->insert_id();
 	}
 	function delArticle($id) {
-		
+		$this->db->query("DELETE FROM articles WHERE id='{$id}'");
 	}
 	function setPermissions() {
 		$this->permissions = true;

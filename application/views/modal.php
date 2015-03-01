@@ -1,4 +1,4 @@
-<div class="modal fade">
+<div class="modal fade" id="addedit">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -9,8 +9,8 @@
 				<?php echo $content; ?>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('Close'); ?></button>
+				<button type="button" class="btn btn-primary"><?php echo $save; ?></button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
