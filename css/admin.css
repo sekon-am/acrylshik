@@ -37,4 +37,11 @@ body {
 }
 .modal-dialog{
 	margin-top:150px;
+	width:1200px;
+}
+#ShortId{
+	height:120px;
+}
+#TextId{
+	height:400px;
 }
