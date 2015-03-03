@@ -78,4 +78,7 @@ class Manarticle extends CI_Controller {
 		$this->ArticleModel->delArticle($id);
 		echo '{"code":100}';
 	}
+	function lst() {
+		$this->load->view('editor/lst-article');
+	}
 }

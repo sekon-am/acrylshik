@@ -72,4 +72,7 @@ class Manproduct extends CI_Controller {
 		$this->ProductModel->delArticle($id);
 		echo '{"code":"OK"}';
 	}
+	function lst() {
+		$this->load->view('editor/lst-product');
+	}
 }
