@@ -15,6 +15,7 @@ class Manproduct extends CI_Controller {
 				'title'	=> lang('Products'),
 				'data'	=> $this->ProductModel->getAllProducts(),
 				'table'	=> 'product',
+				'field'	=> 'title',
 			)
 		);
 	}

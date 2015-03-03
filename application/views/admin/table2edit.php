@@ -16,6 +16,7 @@
 			'row'=>$row,
 			'table'=>$table,
 			'index'=>$i++,
+			'field'=>$field,
 		));
 	endforeach; ?>
 	</tbody>

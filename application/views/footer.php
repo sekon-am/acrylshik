@@ -1,16 +1,21 @@
 	<footer class="block-wide">
 		<div class="footer-top">
 			<div class="block-wrap">
-				<div class="footer-column products">
+				<div class="footer-column foot-products">
 					<h4><?php echo lang('hothothot'); ?></h4>
 					<?php foreach ($products as $prod): ?>
 					<a href="<?php echo $prod->url; ?>"><?php echo $prod->name; ?></a>
 					<?php endforeach; ?>
 				</div>
-				<div class="footer-column works">
+				<div class="footer-column foot-portfolio">
 					<h4><?php echo lang('portfolio'); ?></h4>
+					<div class="portfolio-container">
+					<?php foreach($portfolio as $work): ?>
+						<div class="portfolio-icon" style="background-image:url(<?php echo $work->img; ?>);" data-link="<?php echo $work->url; ?>"></div>
+					<?php endforeach; ?>
+					</div>
 				</div>
-				<div class="footer-column articles">
+				<div class="footer-column foot-articles">
 					<h4><?php echo lang('Articles'); ?></h4>
 					<?php foreach($articles as $article): ?>
 					<a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a>

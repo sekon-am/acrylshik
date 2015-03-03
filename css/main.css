@@ -1027,3 +1027,130 @@ footer a:hover{
 .aliment-info .aliment-title {
 	margin-top: 17%;
 }
+
+
+.filter {
+	padding-top:10px;
+	padding-bottom:10px;
+	margin:50px auto;
+	border-radius:5px;
+	overflow:hidden;
+	background-color:#e8e8e8;
+	text-align:center;
+}
+.filter-item{
+	display:inline-block;
+	width:135px;
+	margin:10px 30px;
+	padding:5px;
+	border-radius:5px;
+	overflow:hidden;
+	color:#666;
+	text-decoration:none;
+	vertical-align:baseline;
+}
+.filter-item .amount{
+	float:right;
+	width:40px;
+	height:40px;
+	padding-top:10px;
+	border-radius:20px;
+	background-color:#fff;
+}
+.filter-item:first-child {
+	width:90px;
+}
+.filter-item:first-child span {
+	display:block;
+	margin-top: 10px;
+}
+.filter-item:hover,.filter-item.active{
+	color:#666;
+	background:#fff;
+}
+.filter-item:hover .amount,.filter-item.active .amount{
+	color:#fff;
+	background-color:#045772;
+}
+
+.works {
+	text-align:center;
+	overflow:hidden;
+}
+.work {
+	display:inline-block;
+	width:400px;
+	margin:40px;
+	overflow:hidden;
+	vertical-align:baseline;
+}
+.work-icon-wrap{
+	width:360px;
+	height:360px;
+	border:1px solid #5e5e5d;
+	border-radius:180px;
+	margin-left:auto;
+	margin-right:auto;
+	overflow:hidden;
+}
+.work-icon{
+	width:320px;
+	height:320px;
+	border-radius:160px;
+	margin:20px;
+	background-position:50% 50%;
+	background-size:cover;
+	background-repeat:no-repeat;
+	transition:transform 0.2s;
+   -webkit-transform: translate3d(0, 0, 0);
+   cursor:pointer;
+}
+.work-icon:hover{
+	transform:scale(1.2,1.2);
+}
+.work h2{
+	margin-top:10px;
+	margin-bottom:5px;
+}
+.work h4 {
+	margin:5px auto;
+}
+.work .hr{
+	margin: auto;
+}
+.work .more {
+	width:120px;
+	margin: 10px auto;
+	overflow:hide;
+	cursor:pointer;
+	color:#045772;
+}
+.work .more .arrow {
+	float:right;
+	width:20px;
+	height:20px;
+	background-color:#045772;
+	border:1px solid #045772;
+	border-radius:3px;
+	color:#fff;
+	font-size: 10pt;
+}
+.work:hover .more{
+}
+.work:hover .more .arrow {
+	background-color:transparent;
+	color:#045772;
+}
+
+.portfolio-icon {
+	display:inline-block;
+	width:70px;
+	height:70px;
+	margin:10px;
+	background-position:50% 50%;
+	background-size:cover;
+	cursor:pointer;
+}
+.portfolio-container{
+	width:380px;
+}

@@ -15,6 +15,7 @@ class Manarticle extends CI_Controller {
 				'title'	=> lang('Articles'),
 				'data'	=> $this->ArticleModel->getArticles(),
 				'table'	=> 'article',
+				'field'	=> 'title',
 			)
 		);
 	}

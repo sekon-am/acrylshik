@@ -1,7 +1,7 @@
 		<tr data-<?php echo $table; ?>-id="<?php echo $row->id; ?>">
 			<th scope="row"><?php echo $index; ?></th>
 			<td>
-				<a class="title" href="<?php echo $row->url; ?>" target="_blank"><?php echo $row->title; ?></a>
+				<a class="title" href="<?php echo $row->url; ?>" target="_blank"><?php echo $row->$field; ?></a>
 			</td>
 			<td>
 				<span class="glyphicon glyphicon-edit td-edit" 
