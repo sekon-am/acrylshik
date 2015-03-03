@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'db01.hostline.ru';
 $db['default']['username'] = 'vh37047_ac_t';
-$db['default']['password'] = 'QiUG7X0p';
+$db['default']['password'] = 'xBXg3IZj';
 $db['default']['database'] = 'vh37047_ac_t';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
