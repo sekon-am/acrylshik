@@ -1,17 +1,27 @@
-$(function(){
-	$('.td-edit').click(
+$(function (){
+	$('.td-edit,.sidebar-menu [data-link]').click(
 		function () {
 			var $this = $(this),
 				url = $this.attr('data-link');
 			$.get(url,function(data){
+				function closeModal(obj){
+					var $fade = $(obj).closest('.fade').fadeOut(250);
+					setTimeout(function(){
+						$fade.remove();
+					},250);
+				}
 				$('body').append(data);
-				$('.fade').fadeIn(200);
+				$('.fade').fadeIn(250);
 				$('[data-dismiss="modal"]').click(
 					function(){
-						var $fade = $(this).closest('.fade').fadeOut(200);
-						setTimeout(function(){
-							$fade.remove();
-						},200);
+						closeModal(this);
+					}
+				);
+				$('.modal-footer .btn-primary').click(
+					function(){
+						var func_name = $('#table-name').val()+'_save';
+						window[func_name](url.replace('edit','save').replace('add','save'));
+						closeModal(this);
 					}
 				);
 			});

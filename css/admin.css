@@ -35,13 +35,17 @@ body {
 	background-color:rgba(0,0,0,0.7);
 	opacity: 1;
 }
-.modal-dialog{
-	margin-top:150px;
+.modal-content{
+	margin:10px auto auto auto;
 	width:1200px;
 }
-#ShortId{
-	height:120px;
+.sidebar-menu {
+	margin-top:30px;
 }
-#TextId{
-	height:400px;
+.nav-sidebar{
+	border-radius:10px;
+}
+.nav-sidebar a:hover {
+	border-radius:10px;
+	cursor:pointer;
 }

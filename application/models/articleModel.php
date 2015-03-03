@@ -82,4 +82,11 @@ class ArticleModel extends CI_Controller {
 	function setPermissions() {
 		$this->permissions = true;
 	}
+	function getRelatedIds($article){
+		$related = array();
+		if(strlen($article->related)>2){
+			$related = explode(',',substr($article->related,1,-1));
+		}
+		return $related;
+	}
 }

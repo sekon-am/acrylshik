@@ -1,5 +1,6 @@
 <?php 
 class ProductModel extends CI_Model {
+	var $permissions = false;
 	function _prepare(&$product) {
 		if($product){
 			$product->images = array();
@@ -11,6 +12,11 @@ class ProductModel extends CI_Model {
 				shuffle($product->images);
 			}
 			$product->url = site_url('product/show/'.$product->id);
+			if($this->permissions){
+				$product->edit_url = site_url('manproduct/edit/'.$product->id);
+				$product->delete_url = site_url('manproduct/delete/'.$product->id);
+				$product->title = $product->name;
+			}
 			return $product;
 		}
 		return null;
@@ -52,5 +58,14 @@ class ProductModel extends CI_Model {
 			return $this->_prepareArray($productsReq->result());
 		}
 		return null;
+	}
+	function setPermissions() {
+		$this->permissions = true;
+	}
+	function delArticle($id) {
+		$this->db->query("DELETE FROM products WHERE id='{$id}'");
+	}
+	function getAllProducts() {
+		return $this->_prepareArray($this->db->query("SELECT * FROM products")->result());
 	}
 }
