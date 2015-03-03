@@ -2,19 +2,19 @@
 class Articles extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('ArticleModel');
+		$this->load->model('Articlemodel');
 	}
 	function index() {
 		$this->load->view('articles',array(
-			'articles'	=> $this->ArticleModel->getLastest(),
+			'articles'	=> $this->Articlemodel->getLastest(),
 		));
 	}
 	function show($id) {
 		load_module('header');
 		$this->load->view('article',array(
-			'article'		=> $this->ArticleModel->getArticle($id),
-			'articlePrev'	=> $this->ArticleModel->getArticle($this->session->userdata('articlePrev')),
-			'related'		=> $this->ArticleModel->getRelated($id),
+			'article'		=> $this->Articlemodel->getArticle($id),
+			'articlePrev'	=> $this->Articlemodel->getArticle($this->session->userdata('articlePrev')),
+			'related'		=> $this->Articlemodel->getRelated($id),
 		));
 		$this->session->set_userdata('articlePrev',$id);
 		load_module('footer');
@@ -22,7 +22,7 @@ class Articles extends CI_Controller {
 	function tag($tagId) {
 		load_module('header');
 		$this->load->view('articles',array(
-			'articles'	=> $this->ArticleModel->getArticlesByTag($tagId),
+			'articles'	=> $this->Articlemodel->getArticlesByTag($tagId),
 		));
 		load_module('footer');
 	}

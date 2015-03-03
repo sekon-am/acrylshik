@@ -3,7 +3,7 @@ class Portfoliomodel extends CI_Model {
 	var $permissions = false;
 	function __construct() {
 		parent::__construct();
-		$this->load->model('CategoryModel','CategoryModel');
+		$this->load->model('Categorymodel','Categorymodel');
 	}
 	function setPermissions() {
 		$this->permissions = true;
@@ -11,7 +11,7 @@ class Portfoliomodel extends CI_Model {
 	function _norm(&$work){
 		$work->url = site_url('portfolio/cat');
 		$work->img = (($work->img)?site_url($this->config->item('img_portfolio_path').$work->img):'');
-		$work->category = $this->CategoryModel->getCategory($work->category_id)->name;
+		$work->category = $this->Categorymodel->getCategory($work->category_id)->name;
 		if($this->permissions){
 			$work->edit_url = site_url('manportfolio/edit/'.$work->id);
 			$work->delete_url = site_url('manportfolio/delete/'.$work->id);
@@ -66,7 +66,7 @@ class Portfoliomodel extends CI_Model {
 			'txt'=>lang('All'),
 			'amount'=>$this->db->query("SELECT COUNT(*) as num FROM portfolio")->row()->num,
 		);
-		$rootCats = $this->CategoryModel->getSubcategories();
+		$rootCats = $this->Categorymodel->getSubcategories();
 		foreach($rootCats as $cat){
 			$filters []= array(
 				'category_id'=>$cat->id,

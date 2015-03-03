@@ -2,18 +2,18 @@
 class Manarticle extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('CategoryModel','CategoryModel');
-		$this->load->model('AuthModel','AuthModel');
-		$this->load->model('ArticleModel','ArticleModel');
-		$this->ArticleModel->setPermissions();
+		$this->load->model('Categorymodel','Categorymodel');
+		$this->load->model('Authmodel','Authmodel');
+		$this->load->model('Articlemodel','Articlemodel');
+		$this->Articlemodel->setPermissions();
 	}
 	function dashboard() {
-		$this->AuthModel->checkEditor();
+		$this->Authmodel->checkEditor();
 		$this->load->view(
 			'admin/table2edit',
 			array(
 				'title'	=> lang('Articles'),
-				'data'	=> $this->ArticleModel->getArticles(),
+				'data'	=> $this->Articlemodel->getArticles(),
 				'table'	=> 'article',
 				'field'	=> 'title',
 			)
@@ -22,8 +22,8 @@ class Manarticle extends CI_Controller {
 	function add() {
 			$edit_form = $this->load->view('editor/article_add',array(
 				'article'=>null,
-				'categories'=>$this->CategoryModel->getCategories(),
-				'articles'=>$this->ArticleModel->getArticles(),
+				'categories'=>$this->Categorymodel->getCategories(),
+				'articles'=>$this->Articlemodel->getArticles(),
 				'related'=>array(),
 				'rand'=>mt_rand(),
 			),true);
@@ -34,12 +34,12 @@ class Manarticle extends CI_Controller {
 			));
 	}
 	function edit($id) {
-		if( $article = $this->ArticleModel->getArticle($id) ) {
+		if( $article = $this->Articlemodel->getArticle($id) ) {
 			$edit_form = $this->load->view('editor/article_add',array(
 				'article'=>$article,
-				'categories'=>$this->CategoryModel->getCategories(),
-				'articles'=>$this->ArticleModel->getArticles(),
-				'related'=>$this->ArticleModel->getRelatedIds($article),
+				'categories'=>$this->Categorymodel->getCategories(),
+				'articles'=>$this->Articlemodel->getArticles(),
+				'related'=>$this->Articlemodel->getRelatedIds($article),
 				'rand'=>mt_rand(),
 			),true);
 			$this->load->view('modal',array(
@@ -66,7 +66,7 @@ class Manarticle extends CI_Controller {
 			$code = 'OK';
 			if(!$id){
 				$tpl = $this->load->view('admin/table-tr',array(
-					'row'=>$this->ArticleModel->getArticle($this->db->insert_id()),
+					'row'=>$this->Articlemodel->getArticle($this->db->insert_id()),
 					'table'=>'article',
 					'index'=>$this->input->post('count'),
 				),true);
@@ -76,7 +76,7 @@ class Manarticle extends CI_Controller {
 		echo json_encode(array('code' => $code, 'tr' => $tpl,));
 	}
 	function delete($id) {
-		$this->ArticleModel->delArticle($id);
+		$this->Articlemodel->delArticle($id);
 		echo '{"code":100}';
 	}
 	function lst() {

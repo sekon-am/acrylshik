@@ -2,11 +2,11 @@
 class Editor extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('AuthModel');
-		$this->load->model('ArticleModel');
+		$this->load->model('Authmodel');
+		$this->load->model('Articlemodel');
 	}
 	function dashboard() {
-		$this->AuthModel->checkEditor();
-		$this->load->view('editor/dashboard',array('login'=>$this->AuthModel->getUserName()));
+		$this->Authmodel->checkEditor();
+		$this->load->view('editor/dashboard',array('login'=>$this->Authmodel->getUserName()));
 	}
 }

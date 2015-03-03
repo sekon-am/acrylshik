@@ -2,15 +2,15 @@
 class Product extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('CategoryModel');
-		$this->load->model('ProductModel');
+		$this->load->model('Categorymodel');
+		$this->load->model('Productmodel');
 	}
 	function index($category_id){
 		return $this->lst($category_id);
 	}
 	function _lst($category_id) {
 		$category_id = intval($category_id);
-		$products = $this->ProductModel->lst($category_id);
+		$products = $this->Productmodel->lst($category_id);
 		if(count($products)>0){
 			for($i=0;$i<count($products);$i++){
 				$this->load->view('product', array(
@@ -24,7 +24,7 @@ class Product extends CI_Controller {
 	}
 	function lst($category_id) {
 		$category_id = intval($category_id);
-		$category = $this->CategoryModel->getCategory($category_id);
+		$category = $this->Categorymodel->getCategory($category_id);
 		load_module('header');
 		$this->load->view('products',array(	
 							'category'=>$category,
@@ -32,7 +32,7 @@ class Product extends CI_Controller {
 		load_module('footer');
 	}
 	function _show($product_id) {
-		$product = $this->ProductModel->details($product_id);
+		$product = $this->Productmodel->details($product_id);
 		$this->load->view('product',array(
 			'product'=>$product,
 			'index'  =>0,

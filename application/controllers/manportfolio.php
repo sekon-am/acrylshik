@@ -2,13 +2,13 @@
 class Manportfolio extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('CategoryModel','CategoryModel');
-		$this->load->model('AuthModel','AuthModel');
+		$this->load->model('Categorymodel','Categorymodel');
+		$this->load->model('Authmodel','Authmodel');
 		$this->load->model('Portfoliomodel','Portfoliomodel');
 		$this->Portfoliomodel->setPermissions();
 	}
 	function dashboard() {
-		$this->AuthModel->checkEditor();
+		$this->Authmodel->checkEditor();
 		$this->load->view(
 			'admin/table2edit',
 			array(
@@ -22,7 +22,7 @@ class Manportfolio extends CI_Controller {
 	function add() {
 			$edit_form = $this->load->view('editor/portfolio_add',array(
 				'portfolio'=>null,
-				'categories'=>$this->CategoryModel->getCategories(),
+				'categories'=>$this->Categorymodel->getCategories(),
 				'rand'=>mt_rand(),
 			),true);
 			$this->load->view('modal',array(
@@ -35,7 +35,7 @@ class Manportfolio extends CI_Controller {
 		if( $portfolio = $this->Portfoliomodel->getWork($id) ) {
 			$edit_form = $this->load->view('editor/portfolio_add',array(
 				'portfolio'=>$portfolio,
-				'categories'=>$this->CategoryModel->getCategories(),
+				'categories'=>$this->Categorymodel->getCategories(),
 				'rand'=>mt_rand(),
 			),true);
 			$this->load->view('modal',array(

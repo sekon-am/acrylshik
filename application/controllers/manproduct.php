@@ -2,18 +2,18 @@
 class Manproduct extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('CategoryModel','CategoryModel');
-		$this->load->model('AuthModel','AuthModel');
-		$this->load->model('ProductModel','ProductModel');
-		$this->ProductModel->setPermissions();
+		$this->load->model('Categorymodel','Categorymodel');
+		$this->load->model('Authmodel','Authmodel');
+		$this->load->model('Productmodel','Productmodel');
+		$this->Productmodel->setPermissions();
 	}
 	function dashboard() {
-		$this->AuthModel->checkEditor();
+		$this->Authmodel->checkEditor();
 		$this->load->view(
 			'admin/table2edit',
 			array(
 				'title'	=> lang('Products'),
-				'data'	=> $this->ProductModel->getAllProducts(),
+				'data'	=> $this->Productmodel->getAllProducts(),
 				'table'	=> 'product',
 				'field'	=> 'title',
 			)
@@ -22,7 +22,7 @@ class Manproduct extends CI_Controller {
 	function add() {
 			$edit_form = $this->load->view('editor/product_add',array(
 				'product'=>null,
-				'categories'=>$this->CategoryModel->getCategories(),
+				'categories'=>$this->Categorymodel->getCategories(),
 				'rand'=>mt_rand(),
 			),true);
 			$this->load->view('modal',array(
@@ -32,10 +32,10 @@ class Manproduct extends CI_Controller {
 			));
 	}
 	function edit($id) {
-		if( $product = $this->ProductModel->details($id) ) {
+		if( $product = $this->Productmodel->details($id) ) {
 			$edit_form = $this->load->view('editor/product_add',array(
 				'product'=>$product,
-				'categories'=>$this->CategoryModel->getCategories(),
+				'categories'=>$this->Categorymodel->getCategories(),
 				'rand'=>mt_rand(),
 			),true);
 			$this->load->view('modal',array(
@@ -60,7 +60,7 @@ class Manproduct extends CI_Controller {
 			$code = 'OK';
 			if(!$id){
 				$tpl = $this->load->view('admin/table-tr',array(
-					'row'=>$this->ProductModel->details($this->db->insert_id()),
+					'row'=>$this->Productmodel->details($this->db->insert_id()),
 					'table'=>'product',
 					'index'=>$this->input->post('count'),
 				),true);
@@ -70,7 +70,7 @@ class Manproduct extends CI_Controller {
 		echo json_encode(array('code' => $code, 'tr' => $tpl,));
 	}
 	function delete($id) {
-		$this->ProductModel->delArticle($id);
+		$this->Productmodel->delArticle($id);
 		echo '{"code":"OK"}';
 	}
 	function lst() {

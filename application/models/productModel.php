@@ -1,5 +1,5 @@
 <?php 
-class ProductModel extends CI_Model {
+class Productmodel extends CI_Model {
 	var $permissions = false;
 	function _prepare(&$product) {
 		if($product){

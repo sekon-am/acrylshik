@@ -2,11 +2,11 @@
 class Aliment extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('CategoryModel');
-		$this->load->model('AlimentModel');
+		$this->load->model('Categorymodel');
+		$this->load->model('Alimentmodel');
 	}
 	function index() {
-		$subcats = $this->CategoryModel->getSubcategories();
-		$this->load->view('aliment',array('aliment'=>$this->AlimentModel->getItems()));
+		$subcats = $this->Categorymodel->getSubcategories();
+		$this->load->view('aliment',array('aliment'=>$this->Alimentmodel->getItems()));
 	}
 }

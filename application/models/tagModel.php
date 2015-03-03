@@ -1,5 +1,5 @@
 <?php
-class TagModel extends CI_Model {
+class Tagmodel extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}

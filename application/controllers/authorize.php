@@ -2,11 +2,11 @@
 class Authorize extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('AuthModel');
+		$this->load->model('Authmodel');
 	}
 	function _checkUser() {
-		if($this->AuthModel->getUserName()) {
-			redirect('/'.$this->AuthModel->getUserRole().'/dashboard/');
+		if($this->Authmodel->getUserName()) {
+			redirect('/'.$this->Authmodel->getUserRole().'/dashboard/');
 			exit(0);
 		}
 	}
@@ -18,7 +18,7 @@ class Authorize extends CI_Controller {
 		if($this->input->post('submit')){
 			$login = $this->input->post('login');
 			$pass = $this->input->post('pass');
-			$res = $this->AuthModel->login($login,$pass);
+			$res = $this->Authmodel->login($login,$pass);
 			if($res['code']==100){
 				$this->_checkUser();
 			}
@@ -27,7 +27,7 @@ class Authorize extends CI_Controller {
 		$this->load->view('admin/loginform',array('msg'=>$msg));
 	}
 	function logout() {
-		$this->AuthModel->logout();
+		$this->Authmodel->logout();
 		$this->login( lang('Successful logout') );
 	}
 }

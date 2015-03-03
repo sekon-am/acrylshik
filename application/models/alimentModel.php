@@ -1,11 +1,11 @@
 <?php
-class AlimentModel extends CI_Model {
+class Alimentmodel extends CI_Model {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('CategoryModel');
+		$this->load->model('Categorymodel');
 	}
 	function getItems() {
-		$rootCats = $this->CategoryModel->getSubcategories();
+		$rootCats = $this->Categorymodel->getSubcategories();
 		$aliments = array();
 		foreach($rootCats as $cat) {
 			$aliments []= array(

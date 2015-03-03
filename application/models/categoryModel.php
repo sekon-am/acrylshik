@@ -1,5 +1,5 @@
 <?php 
-class CategoryModel extends CI_Model {
+class Categorymodel extends CI_Model {
 	function _getChildrenRes($id,$order='ASC') {
 		$sql = ($id==0) ? 
 			"SELECT * FROM categories WHERE ISNULL(parent_id) ORDER BY id {$order}" : 

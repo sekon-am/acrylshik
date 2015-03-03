@@ -1,5 +1,5 @@
 <?php 
-class AuthModel extends CI_Model {
+class Authmodel extends CI_Model {
 	function __constructor() {
 		parent::__constructor();
 		$this->load->library('session');
