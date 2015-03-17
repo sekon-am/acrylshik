@@ -6,6 +6,6 @@
 		</div>
 		<div class="<?php echo ($index%2==0)?'lshift':'rshift'; ?>">
 			<h2 class="product-title"><?php echo $product->name; ?></h2>
-			<div class="product-txt"><?php echo $product->txt; ?></div>
+			<div class="product-txt article-markup"><?php echo $product->txt; ?></div>
 		</div>
 	</div>

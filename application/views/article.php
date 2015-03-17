@@ -5,7 +5,7 @@
 	<h1 class="maintitle"><?php echo $article->title; ?></h1>
 	<div class="sign"><?php echo $article->category; ?>&nbsp;/&nbsp;<?php echo $article->posted; ?></div>
 	<div class="hr"></div>
-	<div class="txt"><?php echo $article->txt; ?></div>
+	<div class="txt  article-markup"><?php echo $article->txt; ?></div>
 	<?php if(count($article->tags)): ?>
 	<div class="tags">
 		<span class="title"><?php echo lang('TAGS'); ?>:</span>
