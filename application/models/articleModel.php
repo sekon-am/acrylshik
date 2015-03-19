@@ -5,6 +5,7 @@ class Articlemodel extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Categorymodel');
 		$this->load->model('Tagmodel');
+		$this->load->helper('fix');
 		$permissions = false;
 	}
 	function _normArticle($article) {
@@ -72,6 +73,7 @@ class Articlemodel extends CI_Controller {
 		return $this->_getArticles($sql);
 	}
 	function addArticle($a) {
+		$a['txt'] = normImgSrc( $a['txt'] );
 		$sql = "INSERT INTO articles (category_id,title,txt,posted,short,related) VALUES ('{$a['category_id']}','{$a['title']}','{$a['txt']}','{$a['posted']}','{$a['short']}','{$a['related']}')";
 		$this->db->query($sql);
 		return $this->db->insert_id();

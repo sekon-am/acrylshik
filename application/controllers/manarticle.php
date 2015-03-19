@@ -5,6 +5,7 @@ class Manarticle extends CI_Controller {
 		$this->load->model('Categorymodel','Categorymodel');
 		$this->load->model('Authmodel','Authmodel');
 		$this->load->model('Articlemodel','Articlemodel');
+		$this->load->helper('fix');
 		$this->Articlemodel->setPermissions();
 	}
 	function dashboard() {
@@ -54,7 +55,7 @@ class Manarticle extends CI_Controller {
 		$category_id = $this->input->post('category_id');
 		$related = $this->input->post('related');
 		$short = $this->input->post('_short');
-		$txt = $this->input->post('txt');
+		$txt = normImgSrc( $this->input->post('txt') );
 		$tpl = '';
 		if($id){
 			$this->db->query("UPDATE articles SET title='{$title}', category_id='{$category_id}', related='{$related}', short='{$short}', txt='{$txt}' WHERE id='{$id}'");
@@ -73,7 +74,7 @@ class Manarticle extends CI_Controller {
 			}
 		}
 		header('Content-Type: application/json');
-		echo json_encode(array('code' => $code, 'tr' => $tpl,));
+		echo json_encode(array('code' => $code, 'tr' => $tpl,'txt'=>$txt));
 	}
 	function delete($id) {
 		$this->Articlemodel->delArticle($id);

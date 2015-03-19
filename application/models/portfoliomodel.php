@@ -4,6 +4,7 @@ class Portfoliomodel extends CI_Model {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('Categorymodel','Categorymodel');
+		$this->load->helper('fix');
 	}
 	function setPermissions() {
 		$this->permissions = true;
@@ -78,10 +79,12 @@ class Portfoliomodel extends CI_Model {
 		return $filters;
 	}
 	function add($name,$title,$category_id,$txt,$img){
+		$txt = normImgSrc( $txt );
 		$this->db->query("INSERT INTO portfolio (name,title,category_id,txt,img) VALUES ('{$name}','{$title}','{$category_id}','{$txt}','{$img}')");
 		return $this->db->insert_id();
 	}
 	function upd($id,$name,$title,$category_id,$txt,$img){
+		$txt = normImgSrc( $txt );
 		$this->db->query("UPDATE portfolio SET name='{$name}',title='{$title}',category_id='{$category_id}','txt={$txt}',img='{$img}' WHERE id='{$id}'");
 		return $this->db->affected_rows();
 	}

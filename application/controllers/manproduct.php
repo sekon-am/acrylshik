@@ -5,6 +5,7 @@ class Manproduct extends CI_Controller {
 		$this->load->model('Categorymodel','Categorymodel');
 		$this->load->model('Authmodel','Authmodel');
 		$this->load->model('Productmodel','Productmodel');
+		$this->load->helper('fix');
 		$this->Productmodel->setPermissions();
 	}
 	function dashboard() {
@@ -48,7 +49,7 @@ class Manproduct extends CI_Controller {
 	function save($id=0) {
 		$name = $this->input->post('name');
 		$category_id = $this->input->post('category_id');
-		$txt = $this->input->post('txt');
+		$txt = normImgSrc( $this->input->post('txt') );
 		$tpl = '';
 		if($id){
 			$this->db->query("UPDATE products SET name='{$name}', category_id='{$category_id}', txt='{$txt}' WHERE id='{$id}'");
