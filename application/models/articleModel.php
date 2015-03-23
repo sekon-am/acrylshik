@@ -49,7 +49,7 @@ class Articlemodel extends CI_Controller {
 				if($relId = trim( $relId )) {
 					$sql .= " OR (id='{$relId}')";
 				}
-			return $this->_getArticles($sql . " ORDER BY posted");
+			return $this->_getArticles($sql . " ORDER BY posted LIMIT 4");
 		}
 		return array();
 	}

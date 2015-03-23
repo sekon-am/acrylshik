@@ -85,13 +85,19 @@ $(function(){
 						if(self){
 							locked = true;
 							$(self).hoverOff();
-							items.slice(1)/*.delay(timeout)*/.animate(
+							items.slice(1).animate(
 								{width : getStandardWidth()},
 								timeout,'linear');
-							items.eq(0)/*.delay(timeout)*/.animate(
-								{width : aliment.width() - (items.length-1)*getStandardWidth()},
+							items.eq(0).animate(
+								{width : aliment.width() - (items.length-1)*getStandardWidth()-1},
 								timeout,'linear',
-								function(){locked = false;});
+								function(){
+									locked = false;
+									$(this).css({
+										width : aliment.width() - (items.length-1)*getStandardWidth()
+									});
+								}
+							);
 						}
 						self = null;
 					}
@@ -117,10 +123,19 @@ $(function(){
 					newSelf(this);
 					items.each(function(){
 						if(this != self){
-							$(this)/*.delay(timeout)*/.animate({width:getUnactiveWidth()},timeout);
+							$(this).animate({width:getUnactiveWidth()},timeout);
 						}
 					});
-					$(this)/*.delay(timeout)*/.animate({width:getActiveWidth()},timeout,function(){locked = false;});
+					$(this)/*.delay(timeout)*/.animate(
+						{width:getActiveWidth()-1},
+						timeout,
+						function(){
+							locked = false;
+							$(this).css(
+								{width:getActiveWidth()}
+							);
+						}
+					);
 				}
 			}
 		});
