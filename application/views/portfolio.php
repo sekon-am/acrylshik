@@ -4,7 +4,6 @@
 	'title' => lang('Portfolio'),
 	'descr' => lang('Portfolio descr'),
 )); ?>	
-<?php load_module('slider'); ?>
 <div class="filter block-wrap">
 	<?php foreach($filters as $filter): ?>
 	<a class="filter-item<?php if($category_id==$filter['category_id']):?> active<?php endif; ?>" href="<?php echo $filter['url']; ?>">

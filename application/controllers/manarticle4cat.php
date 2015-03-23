@@ -6,7 +6,10 @@ class Manarticle4cat extends CI_Controller {
 		$this->load->model('Authmodel');
 		$this->load->helper('fix');
 	}
-	function index($category_id) {
-		
+	function index() {
+		$this->Authmodel->checkEditor();
+		$this->load->view('editor/manarticle4cat',array(
+			'categories' => $this->Categorymodel->getSubcategories(),
+		));
 	}
 }
