@@ -49,15 +49,19 @@ class Manproduct extends CI_Controller {
 	function save($id=0) {
 		$name = $this->input->post('name');
 		$category_id = $this->input->post('category_id');
-		$txt = normImgSrc( $this->input->post('txt') );
+		$txt = $this->input->post('txt');
+		$seo_title = $this->input->post('seo_title');
+		$seo_descr = $this->input->post('seo_descr');
+		$seo_kwds  = $this->input->post('seo_kwds');
 		$tpl = '';
+		$res = null;
 		if($id){
-			$this->db->query("UPDATE products SET name='{$name}', category_id='{$category_id}', txt='{$txt}' WHERE id='{$id}'");
+			$res = $this->Productmodel->update($id,$name,$category_id,$txt,$seo_title,$seo_descr,$seo_kwds);
 		}else{
-			$this->db->query("INSERT INTO products (name,category_id,txt) VALUES ('{$name}','{$category_id}','{$txt}')");
+			$res = $this->Productmodel->insert($name,$category_id,$txt,$seo_title,$seo_descr,$seo_kwds);
 		}
 		$code = 'ERROR';
-		if($this->db->affected_rows()){
+		if($res){
 			$code = 'OK';
 			if(!$id){
 				$tpl = $this->load->view('admin/table-tr',array(

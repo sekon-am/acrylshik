@@ -55,15 +55,19 @@ class Manarticle extends CI_Controller {
 		$category_id = $this->input->post('category_id');
 		$related = $this->input->post('related');
 		$short = $this->input->post('_short');
-		$txt = normImgSrc( $this->input->post('txt') );
+		$txt = $this->input->post('txt');
+		$seo_title = $this->input->post('seo_title');
+		$seo_descr = $this->input->post('seo_descr');
+		$seo_kwds  = $this->input->post('seo_kwds');
 		$tpl = '';
+		$res = null;
 		if($id){
-			$this->db->query("UPDATE articles SET title='{$title}', category_id='{$category_id}', related='{$related}', short='{$short}', txt='{$txt}' WHERE id='{$id}'");
+			$res = $this->Articlemodel->update($id,$title,$category_id,$related,$short,$txt,$seo_title,$seo_descr,$seo_kwds);
 		}else{
-			$this->db->query("INSERT INTO articles (title,category_id,related,short,txt) VALUES ('{$title}','{$category_id}','{$related}','{$short}','{$txt}')");
+			$res = $this->Articlemodel->insert($title,$category_id,$related,$short,$txt,$seo_title,$seo_descr,$seo_kwds);
 		}
 		$code = 'ERROR';
-		if($this->db->affected_rows()){
+		if($res){
 			$code = 'OK';
 			if(!$id){
 				$tpl = $this->load->view('admin/table-tr',array(

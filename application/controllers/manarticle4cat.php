@@ -6,4 +6,7 @@ class Manarticle4cat extends CI_Controller {
 		$this->load->model('Authmodel');
 		$this->load->helper('fix');
 	}
+	function index($category_id) {
+		
+	}
 }

@@ -6,9 +6,9 @@
 	<!--[if IE]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-	<title></title>
-	<meta name="author" content="" />
-	<meta name="description" content="" />
+	<title><?php echo $seo['seo_title']; ?></title>
+	<meta name="description" content="<?php echo $seo['seo_descr']; ?>" />
+	<meta name="keywords" content="<?php echo $seo['seo_kwds']; ?>" />
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="shortcut icon" href="favicon.ico" />

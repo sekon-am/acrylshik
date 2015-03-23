@@ -23,6 +23,24 @@
 	'related'=> $related,
 	'val'=> 'title',
 )); ?>
+<?php load_view('editor/input',array(
+	'label'=>'SEO_Title',
+	'type'=>'text',
+	'el'=>$article,
+	'f'=>'seo_title',
+)); ?>
+<?php load_view('editor/input',array(
+	'label'=>'SEO_Descr',
+	'type'=>'text',
+	'el'=>$article,
+	'f'=>'seo_descr',
+)); ?>
+<?php load_view('editor/input',array(
+	'label'=>'SEO_Kwds',
+	'type'=>'text',
+	'el'=>$article,
+	'f'=>'seo_kwds',
+)); ?>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="article-txt">
 <?php load_view('editor/textarea',array(

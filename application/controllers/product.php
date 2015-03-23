@@ -25,7 +25,11 @@ class Product extends CI_Controller {
 	function lst($category_id) {
 		$category_id = intval($category_id);
 		$category = $this->Categorymodel->getCategory($category_id);
-		load_module('header');
+		load_module('header','index',array(
+			'seo_title' => $category->name . ': ' . $category->title,
+			'seo_descr' => $category->descr,
+			'seo_kwds'  => $category->name,
+		));
 		$this->load->view('products',array(	
 							'category'=>$category,
 						));
@@ -40,7 +44,12 @@ class Product extends CI_Controller {
 		$this->load->view('prod_js');
 	}
 	function show($product_id){
-		load_module('header');
+		$product = $this->Productmodel->details($product_id);
+		load_module('header','index',array(
+			'seo_title' => $product->seo_title,
+			'seo_descr' => $product->seo_descr,
+			'seo_kwds'  => $product->seo_kwds,
+		));
 		$this->_show($product_id);
 		load_module('footer');
 	}

@@ -3,6 +3,9 @@ function product_save(url) {
 								name:$('#NameId').val(),
 								category_id:$('#CategoryId').val(),
 								txt:tinyMCE.get('Text'+$('#Rand').val()+'Id').getContent(),
+								seo_title:$('#SEO_TitleId').val(),
+								seo_descr:$('#SEO_DescrId').val(),
+								seo_kwds:$('#SEO_KwdsId').val(),
 								id:$('#Id').val(),
 								count:$('#Count').val()
 							};

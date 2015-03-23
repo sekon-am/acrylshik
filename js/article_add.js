@@ -5,6 +5,9 @@ function article_save(url) {
 								related:','+($('#RelatedId').val()||[]).join(',')+',',
 								_short:tinyMCE.get('Short'+$('#Rand').val()+'Id').getContent(),
 								txt:tinyMCE.get('Text'+$('#Rand').val()+'Id').getContent(),
+								seo_title:$('#SEO_TitleId').val(),
+								seo_descr:$('#SEO_DescrId').val(),
+								seo_kwds:$('#SEO_KwdsId').val(),
 								id:$('#Id').val(),
 								count:$('#Count').val()
 							};

@@ -1,0 +1,1 @@
+UPDATE articles SET category_id='8',name='gdfgdfg',txt='',seo_title='dfg',seo_descr='dfghgjk',seo_kwds='hgjkhgjk' WHERE id='4'

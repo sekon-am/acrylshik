@@ -1,3 +1,10 @@
+<div role="tabpanel">
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#article-home" aria-controls="article-home" role="tab" data-toggle="tab"><?php echo lang('Params'); ?></a></li>
+		<li role="presentation"><a href="#article-txt" aria-controls="article-txt" role="tab" data-toggle="tab"><?php echo lang('Text'); ?></a></li>
+	</ul>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="article-home">
 <?php load_view('editor/input',array(
 	'label'=>'Name',
 	'type'=>'text',
@@ -10,6 +17,26 @@
 	'val'=> 'name',
 	'selected'=> ($product)?$product->category_id:0,
 )); ?>
+<?php load_view('editor/input',array(
+	'label'=>'SEO_Title',
+	'type'=>'text',
+	'el'=>$product,
+	'f'=>'seo_title',
+)); ?>
+<?php load_view('editor/input',array(
+	'label'=>'SEO_Descr',
+	'type'=>'text',
+	'el'=>$product,
+	'f'=>'seo_descr',
+)); ?>
+<?php load_view('editor/input',array(
+	'label'=>'SEO_Kwds',
+	'type'=>'text',
+	'el'=>$product,
+	'f'=>'seo_kwds',
+)); ?>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="article-txt">
 <?php load_view('editor/textarea',array(
 	'label'=>'Text',
 	'el'=>$product,
@@ -33,6 +60,8 @@
 		$('#Count').val($('[data-product-id]').length);
 <?php endif; ?>
 	</script>
+		</div>
+	</div>
 	<input type="hidden" id="Rand" value="<?php echo $rand; ?>"/>
 	<?php if($product){ ?>
 	<input type="hidden" id="Id" value="<?php echo $product->id; ?>"/>
@@ -40,4 +69,5 @@
 	<input type="hidden" id="Count"/>
 	<?php } ?>
 	<input type="hidden" id="table-name" value="product"/>
+</div>
 <script src="/js/product_add.js"></script>

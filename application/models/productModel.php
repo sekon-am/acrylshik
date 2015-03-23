@@ -68,4 +68,18 @@ class Productmodel extends CI_Model {
 	function getAllProducts() {
 		return $this->_prepareArray($this->db->query("SELECT * FROM products")->result());
 	}
+	function insert($name,$category_id,$txt,$seo_title,$seo_descr,$seo_kwds) {
+		$this->load->helper('seo');
+		$txt = normImgSrc( $txt );
+		$sql = "INSERT INTO products (name,category_id,txt,seo_title,seo_descr,seo_kwds) VALUES ('{$name}','{$category_id}','{$txt}','{$seo_title}','{$seo_descr}','{$seo_kwds}')";
+		$this->db->query($sql);
+		return $this->db->insert_id();
+	}
+	function update($id,$name,$category_id,$txt,$seo_title,$seo_descr,$seo_kwds) {
+		$this->load->helper('seo');
+		$txt = normImgSrc( $txt );
+		$sql = "UPDATE products SET category_id='{$category_id}',name='{$name}',txt='{$txt}',seo_title='{$seo_title}',seo_descr='{$seo_descr}',seo_kwds='{$seo_kwds}' WHERE id='{$id}'";
+		$this->db->query($sql);
+		return $this->db->affected_rows();
+	}
 }
