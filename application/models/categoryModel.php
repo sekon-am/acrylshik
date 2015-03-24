@@ -50,4 +50,15 @@ class Categorymodel extends CI_Model {
 		$this->db->query("UPDATE categories SET txt='{$txt}' WHERE id='{$id}'");
 		return $this->db->affected_rows();		
 	}
+	function getAllSubcategoryIds($category_id) {
+		$categoryIds = array($category_id);
+		$q_sub = $this->db->query("SELECT id FROM categories WHERE parent_id='{$category_id}'");
+		if($q_sub->num_rows()){
+			foreach($q_sub->result() as $cat){
+				$categoryIds = array_merge($categoryIds, $this->getAllSubcategoryIds($cat->id) );
+			}
+		}
+		file_put_contents('cat_'.$category_id.'.txt',implode("\n",$categoryIds));
+		return $categoryIds;
+	}
 }

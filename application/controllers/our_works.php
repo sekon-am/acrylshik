@@ -5,6 +5,8 @@ class Our_works extends CI_Controller {
 		$this->load->model('Productmodel');
 	}
 	function index($category_id=0) {
-		$this->load->view('our_works',array('products'=>$this->Productmodel->getRandomProducts($category_id,3)));
+		$this->load->view('our_works',array(
+			'products'=>$this->Productmodel->getRandomProducts($category_id,3)
+		));
 	}
 }

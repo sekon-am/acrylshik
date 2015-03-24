@@ -46,8 +46,11 @@ class Productmodel extends CI_Model {
 	}
 	function getRandomProducts($category_id=0,$amount=0) {
 		$sql = "SELECT * FROM products";
-		if($category_id ){
-			$sql .= " WHERE category_id='{$category_id}'";
+		if($category_id){
+			$this->load->model('Categorymodel');
+			$cats = $this->Categorymodel->getAllSubcategoryIds($category_id);
+			$sql .= " WHERE 0 OR (category_id='".implode("') OR (category_id='",$cats)."')";
+			file_put_contents('1.sql','1');
 		}
 		$sql .= " ORDER BY RAND()";
 		if($amount){
