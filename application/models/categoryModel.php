@@ -44,4 +44,10 @@ class Categorymodel extends CI_Model {
 	function getCategories() {
 		return $this->_normCategories( $this->db->query("SELECT * FROM categories")->result() );
 	}
+	function updateTxt($id,$txt) {
+		$this->load->helper('fix');
+		$txt = normImgSrc( $txt );
+		$this->db->query("UPDATE categories SET txt='{$txt}' WHERE id='{$id}'");
+		return $this->db->affected_rows();		
+	}
 }

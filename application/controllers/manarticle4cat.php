@@ -12,4 +12,10 @@ class Manarticle4cat extends CI_Controller {
 			'categories' => $this->Categorymodel->getSubcategories(),
 		));
 	}
+	function save() {
+		$rootCats = $this->Categorymodel->getSubcategories();
+		foreach ($rootCats as $cat) {
+			$this->Categorymodel->updateTxt( $cat->id, $this->input->post('cat'.($cat->id) ));
+		}
+	}
 }

@@ -37,4 +37,23 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			$(function () {
+				$('.center-el .btn-primary').click(
+					function() {
+						$.post('<?php echo site_url('/manarticle4cat/save') ?>',{
+						<?php foreach($categories as $cat): ?>	
+							cat<?php echo $cat->id; ?>: tinyMCE.get('Text<?php echo $cat->id; ?>Id').getContent(),
+						<?php endforeach; ?>
+							article4cat: 1
+						}).done(function(){
+							alert('<?php echo lang('Categories articles updated'); ?>');
+						});
+					}
+				);
+			});
+		</script>
+		<div class="center-el">
+			<button class="btn btn-primary" type="button"><?php echo lang('Save'); ?></button>
+		</div>
 <?php load_view('editor/footer'); ?>

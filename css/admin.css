@@ -49,3 +49,6 @@ body {
 	border-radius:10px;
 	cursor:pointer;
 }
+.center-el {
+	text-align:center;
+}

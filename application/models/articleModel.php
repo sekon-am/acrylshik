@@ -73,14 +73,12 @@ class Articlemodel extends CI_Controller {
 		return $this->_getArticles($sql);
 	}
 	function insert($title,$category_id,$related,$short,$txt,$seo_title,$seo_descr,$seo_kwds) {
-		$this->load->helper('seo');
 		$txt = normImgSrc( $txt );
 		$sql = "INSERT INTO articles (category_id,title,txt,posted,short,related,seo_title,seo_descr,seo_kwds) VALUES ('{$category_id}','{$title}','{$txt}','{$posted}','{$short}','{$related}','{$seo_title}','{$seo_descr}','{$seo_kwds}')";
 		$this->db->query($sql);
 		return $this->db->insert_id();
 	}
 	function update($id,$title,$category_id,$related,$short,$txt,$seo_title,$seo_descr,$seo_kwds) {
-		$this->load->helper('seo');
 		$txt = normImgSrc( $txt );
 		$sql = "UPDATE articles SET category_id='{$category_id}',title='{$title}',txt='{$txt}',posted='{$posted}',short='{$short}',related='{$related}',seo_title='{$seo_title}',seo_descr='{$seo_descr}',seo_kwds='{$seo_kwds}' WHERE id='{$id}'";
 		$this->db->query($sql);
