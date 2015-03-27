@@ -1,4 +1,8 @@
-<?php load_view('editor/header'); ?>
+<?php load_view('editor/header',array(
+	'additional' => array( 
+		load_view( 'editor/multiupload-links', array(), true ), 
+	),
+)); ?>
 		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
 			<?php load_module('manproduct','dashboard'); ?>
 		</div>

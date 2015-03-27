@@ -9,7 +9,7 @@ class Articlemodel extends CI_Controller {
 		$permissions = false;
 	}
 	function _normArticle($article) {
-		$article->img = (($article->img)?site_url($this->config->item('img_products_path').$article->img):'');
+		$article->img = (($article->topimg)?site_url($this->config->item('img_products_path').$article->topimg):'');
 		$article->category = $this->Categorymodel->getCategory($article->category_id)->name;
 		$article->sign = $article->category . '   /   ' . date('F j, Y', strtotime($article->posted));
 		$article->url = site_url("articles/show/".$article->id);

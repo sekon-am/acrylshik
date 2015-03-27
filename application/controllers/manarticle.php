@@ -87,4 +87,17 @@ class Manarticle extends CI_Controller {
 	function lst() {
 		$this->load->view('editor/lst-article');
 	}
+	function uploadimg($id) {
+		if(!$id)$id = $this->input->post('id');
+		$dir = './uploads/products/' . $id . '/';
+		if(!file_exists($dir)){
+			mkdir($dir);
+		}
+		file_put_contents('test.txt',$dir);
+		$this->load->library('Uploadhandler',array(
+			'options'=>array(
+				'upload_dir'=>$dir,
+			),
+		));
+	}
 }
