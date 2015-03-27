@@ -3,11 +3,13 @@ class Productmodel extends CI_Model {
 	var $permissions = false;
 	function _prepare(&$product) {
 		if($product){
+			$this->load->helper('files');
+			$dir = 'uploads/products/'.$product->id.'/';
+			$images = readfiles($dir);
 			$product->images = array();
-			$images_req = $this->db->query("SELECT * FROM product_images WHERE product_id='{$product->id}'");
-			if($images_req->num_rows()) {
-				foreach($images_req->result() as $image) {
-					$product->images []= base_url().'images/products/'.$image->img;
+			if(count($images)) {
+				foreach($images as $image) {
+					$product->images []= site_url($image);
 				}
 				shuffle($product->images);
 			}
@@ -50,7 +52,6 @@ class Productmodel extends CI_Model {
 			$this->load->model('Categorymodel');
 			$cats = $this->Categorymodel->getAllSubcategoryIds($category_id);
 			$sql .= " WHERE 0 OR (category_id='".implode("') OR (category_id='",$cats)."')";
-			file_put_contents('1.sql','1');
 		}
 		$sql .= " ORDER BY RAND()";
 		if($amount){

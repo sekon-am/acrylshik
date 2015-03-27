@@ -1,4 +1,4 @@
 <?php
 	function normImgSrc($txt) {
-		return str_replace('src="../','src="/',$txt);
+		return preg_replace('~src="(\.\./)*~i','src="/',$txt);
 	}

@@ -58,7 +58,6 @@ class Categorymodel extends CI_Model {
 				$categoryIds = array_merge($categoryIds, $this->getAllSubcategoryIds($cat->id) );
 			}
 		}
-		file_put_contents('cat_'.$category_id.'.txt',implode("\n",$categoryIds));
 		return $categoryIds;
 	}
 }
