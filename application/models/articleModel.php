@@ -74,7 +74,7 @@ class Articlemodel extends CI_Controller {
 	}
 	function insert($title,$category_id,$related,$short,$txt,$seo_title,$seo_descr,$seo_kwds) {
 		$txt = normImgSrc( $txt );
-		$sql = "INSERT INTO articles (category_id,title,txt,posted,short,related,seo_title,seo_descr,seo_kwds) VALUES ('{$category_id}','{$title}','{$txt}','{$posted}','{$short}','{$related}','{$seo_title}','{$seo_descr}','{$seo_kwds}')";
+		$sql = "INSERT INTO articles (category_id,title,txt,short,related,seo_title,seo_descr,seo_kwds) VALUES ('{$category_id}','{$title}','{$txt}','{$short}','{$related}','{$seo_title}','{$seo_descr}','{$seo_kwds}')";
 		$this->db->query($sql);
 		return $this->db->insert_id();
 	}

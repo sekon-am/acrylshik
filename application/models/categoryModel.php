@@ -7,7 +7,7 @@ class Categorymodel extends CI_Model {
 		return $this->db->query($sql);
 	}
 	function _normCategory(&$category) {
-		$category->img = base_url().'images/categories/'.$category->img;
+		$category->img = base_url().'uploads/cats/'.$category->img;
 		if($this->_getChildrenRes($category->id)->num_rows()) {
 			$category->url = site_url('category/index/'.$category->id);
 		}else{

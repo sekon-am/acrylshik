@@ -34,13 +34,13 @@ class Portfoliomodel extends CI_Model {
 		}
 		return null;
 	}
-	function getWorks($category_id=0,$limit=0) {
+	function getWorks($category_id=0,$limit=0,$start=0) {
 		$sql = "SELECT * FROM portfolio";
 		if($category_id){
 			$sql .= " WHERE category_id='{$category_id}'";
 		}
 		if($limit){
-			$sql .= " LIMIT 0,{$limit}";
+			$sql .= " LIMIT {$start},{$limit}";
 		}
 		$q_works = $this->db->query($sql);
 		if($q_works->num_rows()){

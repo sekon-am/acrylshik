@@ -2,7 +2,9 @@
 	<ul class="nav nav-tabs" role="tablist">
 		<li role="presentation" class="active"><a href="#article-home" aria-controls="article-home" role="tab" data-toggle="tab"><?php echo lang('Params'); ?></a></li>
 		<li role="presentation"><a href="#article-txt" aria-controls="article-txt" role="tab" data-toggle="tab"><?php echo lang('Text'); ?></a></li>
+		<?php if($product): ?>
 		<li role="presentation"><a href="#article-imgs" aria-controls="article-imgs" role="tab" data-toggle="tab"><?php echo lang('Images'); ?></a></li>
+		<?php endif; ?>
 	</ul>
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="article-home">
@@ -62,6 +64,7 @@
 <?php endif; ?>
 	</script>
 		</div>
+		<?php if($product): ?>
 		<div role="tabpanel" class="tab-pane" id="article-imgs">
 			<label><?php echo lang('Images'); ?></label>
     <!-- The file upload form used as target for the file upload widget -->
@@ -108,6 +111,7 @@
         <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
     </form>
 		</div>
+		<?php endif; ?>
 	</div>
 	<input type="hidden" id="Rand" value="<?php echo $rand; ?>"/>
 	<?php if($product){ ?>

@@ -29,11 +29,13 @@ $(function (){
 	);
 	$('.td-delete').click(
 		function () {
-			var $this = $(this),
-				url = $this.attr('data-link');
-			$.get(url,function(data){
-				$this.closest('tr').remove();
-			});
+			if(confirm("Are you sure you want to DELETE the item?")){
+				var $this = $(this),
+					url = $this.attr('data-link');
+				$.get(url,function(data){
+					$this.closest('tr').remove();
+				});
+			}
 		}
 	);
 });

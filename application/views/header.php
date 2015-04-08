@@ -16,8 +16,10 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo get_config_item('base_url'); ?>css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_config_item('base_url'); ?>css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_config_item('base_url'); ?>css/main.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo get_config_item('base_url'); ?>css/swipebox.css" />
 	
 	<script src="<?php echo get_config_item('base_url'); ?>js/jquery-1.11.1.min.js"></script>
+	<script src="<?php echo get_config_item('base_url'); ?>js/jquery.swipebox.js"></script>
 	<script src="<?php echo get_config_item('base_url'); ?>js/main.js"></script>
 </head>
 <body>
