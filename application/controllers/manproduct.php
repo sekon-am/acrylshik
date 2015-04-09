@@ -91,11 +91,8 @@ class Manproduct extends CI_Controller {
 			'options'=>array(
 				'upload_dir'=>$dir,
 				'upload_url'=>site_url($dir).'/',
-				'script_url'=>site_url('manproduct/delimg/'.$id.'/'),
+				'script_url'=>site_url('manproduct/multiupload/'.$id.'/'),
 			),
 		));
-	}
-	function delimg($id,$filename){
-		unlink('uploads/products/'.$id.'/'.$filename);
 	}
 }
