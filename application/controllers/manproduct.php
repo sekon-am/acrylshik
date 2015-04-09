@@ -87,11 +87,15 @@ class Manproduct extends CI_Controller {
 		if(!file_exists($dir)){
 			mkdir($dir);
 		}
-		file_put_contents('test.txt',$dir);
-		$this->load->library('Uploadhandler',array(
+		$this->load->library('uploadhandler',array(
 			'options'=>array(
 				'upload_dir'=>$dir,
+				'upload_url'=>site_url($dir).'/',
+				'script_url'=>site_url('manproduct/delimg/'.$id.'/'),
 			),
 		));
+	}
+	function delimg($id,$filename){
+		unlink('uploads/products/'.$id.'/'.$filename);
 	}
 }

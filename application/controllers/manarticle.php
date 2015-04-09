@@ -2,9 +2,9 @@
 class Manarticle extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('Categorymodel','Categorymodel');
-		$this->load->model('Authmodel','Authmodel');
 		$this->load->model('Articlemodel','Articlemodel');
+		$this->load->model('Authmodel','Authmodel');
+		$this->load->model('Categorymodel','Categorymodel');
 		$this->load->helper('fix');
 		$this->Articlemodel->setPermissions();
 	}
@@ -88,16 +88,37 @@ class Manarticle extends CI_Controller {
 		$this->load->view('editor/lst-article');
 	}
 	function uploadimg($id) {
-		if(!$id)$id = $this->input->post('id');
-		$dir = './uploads/products/' . $id . '/';
+		
+		$dir = 'uploads/articles/'.$id.'/';
 		if(!file_exists($dir)){
 			mkdir($dir);
+		}else{
+			function rem_dir($dir) {
+				if ($handle = opendir($dir)) {
+					while( false !== ($entry = readdir($handle))) {
+						if ($entry != "." && $entry != "..") {
+							if(is_dir($entry)){
+								rem_dir($dir.$entry);
+								rm_dir($dir.$entry);
+							}else{
+								unlink($dir.$entry);
+							}
+						}
+					}
+					closedir($handle);
+				}
+			}
+			rem_dir($dir);
 		}
-		file_put_contents('test.txt',$dir);
-		$this->load->library('Uploadhandler',array(
+		$this->load->library('uploadhandler',array(
 			'options'=>array(
 				'upload_dir'=>$dir,
+				'upload_url'=>site_url($dir).'/',
+				'script_url'=>site_url('manarticle/delimg'),
 			),
 		));
+		$res = $this->uploadhandler->get_response();
+		$fname = $res['files'][0]->name;
+		$this->Articlemodel->updateImg($id,$fname);
 	}
 }

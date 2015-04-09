@@ -1,3 +1,4 @@
+	<a class="go-top" href="#"><span>&uArr;</span></a>	
 	<footer class="block-wide">
 		<div class="footer-top">
 			<div class="block-wrap">
@@ -16,7 +17,7 @@
 					</div>
 				</div>
 				<div class="footer-column foot-articles">
-					<h4><?php echo lang('Articles'); ?></h4>
+					<a href="<?php echo site_url('pagearticles/') ?>"><h4><?php echo lang('Articles'); ?></h4></a>
 					<?php foreach($articles as $article): ?>
 					<a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a>
 					<?php endforeach; ?>

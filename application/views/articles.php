@@ -12,5 +12,4 @@
 			<div class="short"><?php echo $article->short; ?></div>
 		</div>
 		<?php endforeach; ?>
-		<a class="go-top" href="#"><span>&uArr;</span></a>	
 	</article>

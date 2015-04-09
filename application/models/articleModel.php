@@ -1,19 +1,19 @@
 <?php
-class Articlemodel extends CI_Controller {
+class Articlemodel extends CI_Model {
 	var $permissions;
 	function __construct() {
 		parent::__construct();
-		$this->load->model('Categorymodel');
 		$this->load->model('Tagmodel');
+		$this->load->model('Categorymodel');
 		$this->load->helper('fix');
-		$permissions = false;
+		$this->permissions = false;
 	}
 	function _normArticle($article) {
-		$article->img = (($article->topimg)?site_url($this->config->item('img_products_path').$article->topimg):'');
+		$article->topimg = (($article->topimg)?site_url('uploads/articles/'.$article->id.'/'.$article->topimg):'');
 		$article->category = $this->Categorymodel->getCategory($article->category_id)->name;
 		$article->sign = $article->category . '   /   ' . date('F j, Y', strtotime($article->posted));
 		$article->url = site_url("articles/show/".$article->id);
-		$article->tags = $this->Tagmodel->getArticleTags($article->id);
+		$article->tags = array();//$this->Tagmodel->getArticleTags($article->id);
 		if($this->permissions){
 			$article->edit_url = site_url("manarticle/edit/".$article->id);
 			$article->delete_url = site_url("manarticle/delete/".$article->id);
@@ -96,5 +96,10 @@ class Articlemodel extends CI_Controller {
 			$related = explode(',',substr($article->related,1,-1));
 		}
 		return $related;
+	}
+	function updateImg($id,$img) {
+		file_put_contents('log.txt',"UPDATE articles SET topimg='{$img}' WHERE id='{$id}'",FILE_APPEND);
+		$this->db->query("UPDATE articles SET topimg='{$img}' WHERE id='{$id}'");
+		return $this->db->affected_rows();
 	}
 }

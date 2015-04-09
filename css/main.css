@@ -831,7 +831,7 @@ footer a:hover{
 }
 .footer-top a{
 	display:block;
-	margin:5px auto 5px 10px;
+	margin:5px auto 5px 0px;
 }
 .footer-top h4 {
 	font-weight:bold;
@@ -842,6 +842,13 @@ footer a:hover{
 .footer-column {
 	margin: 40px auto;
 	text-align:left;
+}
+.foot-articles{
+	overflow:hidden;
+}
+.no-lm{
+	margin-left:0;
+	padding-left:1px;
 }
 @media screen and (min-width:961px){
 	.footer-column {
@@ -1308,8 +1315,12 @@ footer a:hover{
 }
 
 
-
-
+/*
+* govno-fix
+*/
+.article .short {
+	height:90px;
+}
 
 
 

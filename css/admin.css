@@ -52,3 +52,7 @@ body {
 .center-el {
 	text-align:center;
 }
+.bar {
+    height: 18px;
+    background: green;
+}
