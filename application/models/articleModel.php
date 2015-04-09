@@ -10,6 +10,7 @@ class Articlemodel extends CI_Model {
 	}
 	function _normArticle($article) {
 		$article->topimg = (($article->topimg)?site_url('uploads/articles/'.$article->id.'/'.$article->topimg):'');
+		$article->img = $article->topimg;
 		$article->category = $this->Categorymodel->getCategory($article->category_id)->name;
 		$article->sign = $article->category . '   /   ' . date('F j, Y', strtotime($article->posted));
 		$article->url = site_url("articles/show/".$article->id);
@@ -80,7 +81,7 @@ class Articlemodel extends CI_Model {
 	}
 	function update($id,$title,$category_id,$related,$short,$txt,$seo_title,$seo_descr,$seo_kwds) {
 		$txt = normImgSrc( $txt );
-		$sql = "UPDATE articles SET category_id='{$category_id}',title='{$title}',txt='{$txt}',posted='{$posted}',short='{$short}',related='{$related}',seo_title='{$seo_title}',seo_descr='{$seo_descr}',seo_kwds='{$seo_kwds}' WHERE id='{$id}'";
+		$sql = "UPDATE articles SET category_id='{$category_id}',title='{$title}',txt='{$txt}',short='{$short}',related='{$related}',seo_title='{$seo_title}',seo_descr='{$seo_descr}',seo_kwds='{$seo_kwds}' WHERE id='{$id}'";
 		$this->db->query($sql);
 		return $this->db->affected_rows();
 	}

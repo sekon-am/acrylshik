@@ -1,5 +1,5 @@
 <article class="article block-wrap article-1">
-	<?php if($article->img): ?>
+	<?php if($article->topimg): ?>
 	<div class="image" style="background-image:url(<?php echo $article->topimg; ?>);"></div>
 	<?php endif; ?>
 	<div class="maintitle h1"><?php echo lang('Articles'); ?><span>&gt;</span><h1><?php echo $article->title; ?></h1></div>
