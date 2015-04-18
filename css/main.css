@@ -1329,7 +1329,7 @@ footer a:hover{
 	top:0;
 	left:0;
 	color:#fff;
-	text-shadow: 0 0 1px #000;
+	text-shadow: 0 0 4px #000;
 }
 .swipebox:hover .swipebox-title{
 	background-color:rgba(50,50,50,0.7);

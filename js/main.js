@@ -33,17 +33,15 @@ $(
 				ttl = $this . attr('alt'),
 				flt = $this . css('float');
 			$this
-				.css('float','none')
 				.wrap( 
 					$('<a></a>') 
 						. attr('href', url) 
 						. attr('title', ttl)
 						. addClass('swipebox')
 						. attr('rel', rand )
-						. css({
-							'float' : flt
-						})
-				).after(
+						. attr('style', $this.attr('style'))
+				).attr('style','')
+				.after(
 					$('<div></div>')
 						.addClass('swipebox-title')
 						.html(ttl)
