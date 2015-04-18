@@ -2,7 +2,11 @@
 	<?php if($article->topimg): ?>
 	<div class="image" style="background-image:url(<?php echo $article->topimg; ?>);"></div>
 	<?php endif; ?>
-	<div class="maintitle h1"><?php echo lang('Articles'); ?><span>&gt;</span><h1><?php echo $article->title; ?></h1></div>
+	<div class="maintitle h1">
+		<a href="<?php echo site_url('pagearticles/') ?>" class="no-decoration"><?php echo lang('Articles'); ?></a>
+		<span>&gt;</span>
+		<h1><?php echo $article->title; ?></h1>
+	</div>
 	<div class="sign"><?php echo $article->category; ?>&nbsp;/&nbsp;<?php echo $article->posted; ?></div>
 	<div class="hr"></div>
 	<div class="txt  article-markup"><?php echo $article->txt; ?></div>

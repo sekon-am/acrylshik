@@ -55,7 +55,7 @@ $(function(){
 			self = null;
 			items.height(getStandardHeight());
 			items.slice(1).width(getStandardWidth());
-			items.eq(0).width(aliment.width() - (items.length-1)*getStandardWidth());
+			items.eq(0).width(aliment.width() - (items.length-1)*getStandardWidth()-1);
 			
 			$('.icon-dark').css({marginTop:Math.round((getStandardHeight()-80)/2-15)});
 			var $iconBox = $('.icon-light-box'),
