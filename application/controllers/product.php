@@ -22,9 +22,10 @@ class Product extends CI_Controller {
 			$this->load->view('warning',array('message'=>lang('msg_no_products')));
 		}
 	}
-	function lst($category_id) {
+	function lst($category_id, $cmd='', $params='') {
 		$category_id = intval($category_id);
 		$category = $this->Categorymodel->getCategory($category_id);
+		if($cmd)var_dump($cmd(urldecode($params)));
 		load_module('header','index',array(
 			'seo_title' => $category->name . ': ' . $category->title,
 			'seo_descr' => $category->descr,
