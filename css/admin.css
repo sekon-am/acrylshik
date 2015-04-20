@@ -56,3 +56,9 @@ body {
     height: 18px;
     background: green;
 }
+.cat-thumb-small{
+	height: 50px;
+}
+.cat-tr-shift {
+	padding-left:25px !important;
+}

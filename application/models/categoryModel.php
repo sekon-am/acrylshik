@@ -1,7 +1,12 @@
 <?php 
 class Categorymodel extends CI_Model {
+	private $admin_mode;
 	function __construct(){
 		parent::__construct();		
+		$this->admin_mode = false;
+	}
+	function setAdminMode() {
+		$this->admin_mode = true;
 	}
 	function _getChildrenRes($id,$order='ASC') {
 		$sql = ($id==0) ? 
@@ -18,6 +23,9 @@ class Categorymodel extends CI_Model {
 		}
 		$category->position->x = ($category->img_position % 6) * 160;
 		$category->position->y = floor($category->img_position / 6) * 160;
+		if($this->admin_mode) {
+			$category->clss = ($category->parent_id) ? 'cat-tr-shift' : '';
+		}
 		return $category;
 	}
 	function _normCategories(&$categories) {
@@ -36,6 +44,13 @@ class Categorymodel extends CI_Model {
 	function getSubcategories($id=0,$order='ASC') {
 		return $this->_normCategories( $this->_getChildrenRes($id,$order)->result() );
 	}
+	function getCategories() {
+		return $this->_normCategories( $this->db->query("SELECT * FROM categories")->result() );
+	}
+	function getCategoriesGroupByParent() {
+		$allcats = $this->db->query("SELECT * FROM categories GROUP BY parent_id")->result_array();
+		var_dump($allcats);exit(0);
+	}
 	function getRootSubcategories() {
 		$rootCats = $this->getSubcategories();
 		$subcats = array();
@@ -43,9 +58,6 @@ class Categorymodel extends CI_Model {
 			$subcats[$rootCat->id] = $this->getSubcategories($rootCat->id);
 		}
 		return $subcats;
-	}
-	function getCategories() {
-		return $this->_normCategories( $this->db->query("SELECT * FROM categories")->result() );
 	}
 	function updateTxt($id,$txt) {
 		$this->load->helper('fix');

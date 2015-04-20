@@ -1333,6 +1333,7 @@ footer a:hover{
 }
 .swipebox:hover .swipebox-title{
 	background-color:rgba(50,50,50,0.7);
+	text-shadow:none;
 }
 .swipebox-zoom {
 	display: none;
