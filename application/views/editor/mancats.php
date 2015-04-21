@@ -1,7 +1,7 @@
 <?php load_view('editor/header'); ?>
 		<script src="/js/angular.js"></script>
 		<script src="/js/catsctrl.js"></script>
-		<div ng-app="catsapp"><div class="col-sm-12" ng-controller="catsctrl">
+		<div class="col-sm-12" ng-app="catsapp" ng-controller="catsctrl">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -15,16 +15,25 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="cat in cats">
-						<td class="{{cat.clss}}">{{cat.name}}</td>
-						<td>{{cat.parent}}</td>
-						<td>{{cat.title}}</td>
-						<td>{{cat.descr}}</td>
-						<td>{{cat.img_position}}</td>
+						<td class="{{cat.clss}}"><input type="text" ng-model="cat.name"/></td>
+						<td>
+							<select 
+								ng-if="cat.parent_id"
+								ng-model="cat.parent_id" 
+								ng-options="rootcat.value as rootcat.label for rootcat in rootcats">
+							</select>
+						</td>
+						<td><input type="text" ng-model="cat.title" size="30"/></td>
+						<td><input type="text" ng-model="cat.descr" size="40"/></td>
+						<td><input type="text" ng-model="cat.img_position" size="5"/></td>
 						<td><img src="{{cat.img}}" class="cat-thumb-small"></td>
 					</tr>
 				</tbody>
 			</table>
-			<h1>{{catsctrl.hi}}</h2>
-		</div></div>
+			<div class="center">
+				<!--<button class="btn-default btn-add"><?php echo lang('Add'); ?></button>-->
+				<button class="btn-primary btn-save" ng-click="cats_save()"><?php echo lang('Save'); ?></button>
+			</div>
+		</div>
 		<script >
 <?php load_view('editor/footer'); ?>

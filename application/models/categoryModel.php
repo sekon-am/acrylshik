@@ -24,7 +24,7 @@ class Categorymodel extends CI_Model {
 		$category->position->x = ($category->img_position % 6) * 160;
 		$category->position->y = floor($category->img_position / 6) * 160;
 		if($this->admin_mode) {
-			$category->clss = ($category->parent_id) ? 'cat-tr-shift' : '';
+			$category->clss = ($category->parent_id) ? 'cat-tr-shift' : 'cat-tr-bold';
 		}
 		return $category;
 	}
@@ -47,9 +47,29 @@ class Categorymodel extends CI_Model {
 	function getCategories() {
 		return $this->_normCategories( $this->db->query("SELECT * FROM categories")->result() );
 	}
+	function getRootSelect() {
+		$rootcats = $this->db->query("SELECT * FROM categories WHERE ISNULL(parent_id)")->result();
+		$res = array();
+		foreach($rootcats as $rootcat){
+			$obj = null;
+			$obj->value = $rootcat->id;
+			$obj->label = $rootcat->name;
+			$res []= $obj;
+		}
+		return $res;
+	}
 	function getCategoriesGroupByParent() {
-		$allcats = $this->db->query("SELECT * FROM categories GROUP BY parent_id")->result_array();
-		var_dump($allcats);exit(0);
+		$rootcats = $this->_normCategories( 
+			$this->db->query("SELECT * FROM categories WHERE ISNULL(parent_id)")->result() 
+		);
+		$allcats = array();
+		foreach($rootcats as $rootcat){
+			$allcats []= $rootcat;
+			$allcats = array_merge($allcats, $this->_normCategories( 
+				$this->db->query("SELECT * FROM categories WHERE parent_id='{$rootcat->id}'")->result()
+			));
+		}
+		return $allcats;
 	}
 	function getRootSubcategories() {
 		$rootCats = $this->getSubcategories();
@@ -74,5 +94,16 @@ class Categorymodel extends CI_Model {
 			}
 		}
 		return $categoryIds;
+	}
+	function saveCats($cats) {
+		$affected = 0;
+		foreach($cats as $cat) {
+			if(!$cat->parent_id)$cat->parent_id='NULL';
+			$sql = "UPDATE categories SET name='{$cat->name}', title='{$cat->title}', descr='{$cat->descr}', parent_id={$cat->parent_id}, img_position='{$cat->img_position}' WHERE id='{$cat->id}'";
+			$this->db->query($sql);
+			$affected += $this->db->affected_rows();
+		}
+		file_put_contents('log.txt',$affected);
+		return $affected;
 	}
 }

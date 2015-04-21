@@ -11,7 +11,15 @@ class Mancats extends CI_Controller {
 		$this->load->view('editor/mancats');
 	}
 	public function lst() {
-		echo json_encode($this->Categorymodel->getCategories());
+		$obj = null;
+		$obj->cats = $this->Categorymodel->getCategoriesGroupByParent();
+		$obj->rootcats = $this->Categorymodel->getRootSelect();
+		echo json_encode($obj);
 	}
-	function tst() {$this->Categorymodel->getCategoriesGroupByParent();}
+	public function save() {
+		$cats = json_decode(json_decode(file_get_contents('php://input'))->cats);
+		$res = null;
+		$res->affected_rows = intval($this->Categorymodel->saveCats($cats));
+		echo json_encode($res);
+	}
 }

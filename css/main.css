@@ -905,7 +905,8 @@ footer a:hover{
  * Products List
  */
 .products-list {
-	margin: 40px auto;
+	margin-top:40px;
+/*	margin: 40px auto;*/
 }
 .category-box {
 	border-bottom:2px solid #666;
@@ -913,10 +914,16 @@ footer a:hover{
 	text-align:left;
 }
 .category-box-wrap{
+}
+.category-icon{
+	width: 148px;
+	height: 148px;
+	float:left;
+	margin-top:-40px;
 	margin-bottom:5px;
-	background-position:0% 50%;
+	background-image:url("../images/icons.png");
 	background-repeat:no-repeat;
-	background-size:auto 100%;
+	transform: scale(0.45,0.45);
 }
 .category-name {
 	margin-left:60px;
