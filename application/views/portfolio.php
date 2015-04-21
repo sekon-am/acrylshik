@@ -12,11 +12,15 @@
 	</a>
 	<?php endforeach; ?>
 </div>
-<div class="works block-wrap">
+<div class="works block-wrap ">
 <?php foreach($works as $work): ?>
-	<div class="work">
-		<div class="work-icon-wrap">
-			<div class="work-icon" style="background-image:url(<?php echo $work->img; ?>);"></div>
+	<div class="work-one">
+		<div class="icon-wrap">
+			<div class="icon" style="background-image:url(<?php echo $work->img; ?>);">
+						<div class="portfolio-icon-wave">
+							<div class="portfolio-wave-title"><?php echo $work->name; ?></div>
+						</div>
+			</div>
 		</div>
 		<h2><?php echo $work->name; ?></h2>
 		<div class="hr"></div>

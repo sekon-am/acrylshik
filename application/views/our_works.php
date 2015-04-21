@@ -9,7 +9,11 @@ foreach($portfolio as $work):
 ?>
 			<div class="work-one">
 				<div class="icon-wrap">
-					<div class="icon" style="background-image:url(<?php echo $work->img; ?>);" data-link="<?php echo $work->url; ?>"></div>
+					<div class="icon" style="background-image:url(<?php echo $work->img; ?>);" data-link="<?php echo $work->url; ?>">
+						<div class="portfolio-icon-wave">
+							<div class="portfolio-wave-title"><?php echo $work->name; ?></div>
+						</div>
+					</div>
 					<div class="icon-wrap-pop-upper"></div>
 				</div>
 				<div class="work1">
