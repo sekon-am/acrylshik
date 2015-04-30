@@ -4,6 +4,7 @@ src: url('../fonts/glyphicons-halflings-regular.eot');
 src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 body{
+	padding-top:26px;
 	background-color:#f9f9f9;
 	color:#2b2b2b;
 	text-align: center;
@@ -1317,12 +1318,20 @@ footer a:hover{
 	line-height:1;
 	color:#000;
 }
-.subcategory-image{
+.subcategory-image-wrap{
 	width:207px;
 	height:285px;
+	margin:8px auto auto;
+	overflow:hidden;
+}
+.subcategory-image{
+	height:100%;
 	background-size:cover;
 	background-position:50% 50%;
-	margin:8px auto auto;
+	transition:transform 0.5s;
+}
+.subcategory-icon:hover .subcategory-image {
+	transform: scale(1.1,1.1);
 }
 .subcategory-icon .more {
 	width:120px;
@@ -1402,7 +1411,9 @@ footer a:hover{
 	font-size:11pt;
 	text-align:center;
 	color:#fff;
-	position:relative;
+	position:fixed;
+	top:0;
+	left:0;
 	z-index:100;
 }
 .contacts-email{

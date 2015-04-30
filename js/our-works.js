@@ -6,7 +6,7 @@ $(
 		function our_works_parallax(){
 			var $our_works = $('.our-works'),
 				$window = $(window),
-				img_height = 1500,
+				img_height = 2250,
 				scrollTop = $window.scrollTop(),
 				elementTop = $our_works.offset().top,
 				elementHeight = $our_works.height(),

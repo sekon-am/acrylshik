@@ -11,7 +11,9 @@
 						<h2><?php echo $category->name; ?></h2>
 					</a>
 				</div>
-				<div class="subcategory-image" style="background-image:url(<?php echo $category->img; ?>);"></div>
+				<div class="subcategory-image-wrap">
+					<div class="subcategory-image" style="background-image:url(<?php echo $category->img; ?>);"></div>
+				</div>
 				<div class="subcategory-title"><?php echo $category->title; ?></div>
 				<div class="more" data-link="<?php echo $category->url; ?>"><div class="arrow">&gt;</div>Подробнее</div>
 			</div>
