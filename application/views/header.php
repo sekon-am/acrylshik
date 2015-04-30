@@ -17,7 +17,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo get_config_item('base_url'); ?>css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_config_item('base_url'); ?>css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_config_item('base_url'); ?>css/swipebox.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo get_config_item('base_url'); ?>css/bootstrap.min.css" />
 	
 	<script src="<?php echo get_config_item('base_url'); ?>js/jquery-1.11.1.min.js"></script>
 	<script src="<?php echo get_config_item('base_url'); ?>js/jquery.swipebox.js"></script>
@@ -26,8 +25,8 @@
 <body>
 	<header class="block-wide">
 		<div class="contacts">
-			<a class="contacts-email" href="mailto:info@acrylshik.ru"><span class="glyphicon glyphicon-envelope"></span>  info@acrylshik.ru</a>
-			<span class="contacts-phone"><span class="glyphicon glyphicon-earphone"></span> +7 (499) 372-09-21</span>
+			<a class="contacts-email" href="mailto:info@acrylshik.ru"><span></span> info@acrylshik.ru</a>
+			<span class="contacts-phone"><span></span> +7 (499) 372-09-21</span>
 		</div>
 		<div class="header-block">
 			<a href="<?php echo get_config_item('base_url'); ?>" id="logo" style="background-image:url(/images/logo-<?php echo ((is_home())?'large':'small'); ?>.png);"></a>

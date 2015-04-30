@@ -1,3 +1,8 @@
+@font-face {
+font-family: 'Glyphicons Halflings';
+src: url('../fonts/glyphicons-halflings-regular.eot');
+src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
 body{
 	background-color:#f9f9f9;
 	color:#2b2b2b;
@@ -1403,13 +1408,22 @@ footer a:hover{
 .contacts-email{
 	margin-right:20px;
 	color:#fff;
+	text-decoration:none;
 }
 .contacts-email:hover{
 	color:#8AF4F8;
-	text-decoration:none;
 }
-
-
+.contacts-email span, .contacts-phone span {
+	position:relative;
+	top:3px;
+	font-family: 'Glyphicons Halflings';
+} 
+.contacts-phone span:before {
+	content: "\e182";
+}
+.contacts-email span:before {
+	content: "\2709";
+}
 
 
 
