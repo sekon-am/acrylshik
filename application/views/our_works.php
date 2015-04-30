@@ -1,9 +1,10 @@
 	<article class="our-works block-wide">
 		<div class="block-wrap">
-			<h3 class="h1"><?php echo lang('Our works'); ?></h3>
-			<p class="h1-descr"><?php echo lang('Our works descr'); ?></p>
-			<div class="hr-light"></div>
-<?php 
+<?php load_view('part_h',array(
+	'title' => lang('Portfolio'),
+	'descr' => lang('Portfolio descr'),
+)); ?>	
+<<?php 
 if(count($portfolio)):
 foreach($portfolio as $work):
 ?>

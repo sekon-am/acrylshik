@@ -59,7 +59,7 @@ $(
 						{
 							'left':'0',
 						},
-						700,
+						500,
 						'swing',
 						function(){
 							$(this).find('.animation-frame').css({
