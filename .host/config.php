@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://test.acrylshik.ru/';
+$config['base_url']	= 'http://acrylshik.ru/';
 
 /*
 |--------------------------------------------------------------------------

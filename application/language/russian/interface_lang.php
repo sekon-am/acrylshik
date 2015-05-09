@@ -1,6 +1,6 @@
 <?php 
 $lang["enter"]	= "Войти";
-$lang["msg_no_products"]	= "В этом разделе проодукции ещё нет, захотиде поздже!";
+$lang["msg_no_products"]	= "В этом разделе проодукции ещё нет, заходите позже!";
 $lang["TAGS"]	= "Теги";
 $lang["Relative articles"]	= "Похожие статьи";
 $lang["hothothot"]	= "Горячие предложения";

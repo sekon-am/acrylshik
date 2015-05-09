@@ -1,1 +1,1 @@
-1
+UPDATE portfolio SET name='wertwertwertqqqq',title='',category_id='8','txt=',img='our-works-sample.jpg' WHERE id='11'

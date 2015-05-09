@@ -85,7 +85,7 @@ class Portfoliomodel extends CI_Model {
 	}
 	function upd($id,$name,$title,$category_id,$txt,$img){
 		$txt = normImgSrc( $txt );
-		$this->db->query("UPDATE portfolio SET name='{$name}',title='{$title}',category_id='{$category_id}','txt={$txt}',img='{$img}' WHERE id='{$id}'");
+		$this->db->query("UPDATE portfolio SET name='{$name}',title='{$title}',category_id='{$category_id}',txt='{$txt}',img='{$img}' WHERE id='{$id}'");
 		return $this->db->affected_rows();
 	}
 	function del($id){

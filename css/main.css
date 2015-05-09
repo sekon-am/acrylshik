@@ -149,7 +149,6 @@ article{
 header{
 	background-image:url(../images/header-bg.png);
 	background-color:rgba(0,0,0,.77);
-	overflow:hidden;
 }
 #logo{
 	display:block;
@@ -599,7 +598,7 @@ header{
 	border-radius:10px;
 }
 .articles .article:hover {
-	border:1px solid #ccc;
+	border:1px solid #8AF4F8;
 	background-color:#eee;
 }
 @media screen and (max-width:640px){
@@ -696,7 +695,7 @@ header{
 	font-size:12pt;
 }
 .article-1 .hr {
-	border-top:1px solid #aaa;
+	border-top:1px solid #8AF4F8;
 	margin:10px auto;
 	background-image:none;
 }
@@ -704,6 +703,7 @@ header{
 	margin:20px auto 35px;
 	line-height:1.5;
 	text-indent:15px;
+	overflow:hidden;
 }
 .articles .article:hover,.article .rel-article:hover, .prev-article .image:hover{
 	cursor:pointer;
@@ -744,7 +744,7 @@ header{
 	.prev-article {
 		margin: 40px auto;
 		background-color:#eee;
-		border:1px solid #ccc;
+		border:1px solid #8AF4F8;
 		border-radius:4px;
 		padding:10px;
 		overflow:hidden;
@@ -1407,7 +1407,7 @@ footer a:hover{
 	height:26px;
 	padding-top:2px;
 	padding-bottom:2px;
-	background-color:rgba(0,0,0,0.6);
+	background-color:rgba(0,0,0,0.8);
 	font-size:11pt;
 	text-align:center;
 	color:#fff;
